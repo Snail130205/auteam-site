@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 16px 64px 16px;
+
+  .social-network,
+  .menu-action {
+    display: flex;
+    flex-direction: row;
+
+    .link {
+      padding-left: 8px;
+    }
+    .button {
+      font-family: Inter, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      align-items: center;
+      color: #afafaf;
+      padding: 8px;
+
+      &:hover,
+      &.active {
+        color: #1A1A1A;
+      }
+    }
+  }
+}

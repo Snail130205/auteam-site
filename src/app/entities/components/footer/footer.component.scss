@@ -1,0 +1,64 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px 16px 0 16px;
+
+  .img {
+    padding-bottom: 20px;
+  }
+
+  .line {
+    width: 90%;
+    margin: 24px 0;
+    background: #E4E4E7;
+    height: 1px;
+  }
+
+  .menu-action {
+    display: flex;
+    flex-direction: row;
+
+    .button {
+      font-family: Inter, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      align-items: center;
+      color: #afafaf;
+      padding: 8px;
+
+      &:hover,
+      &.active {
+        color: #1A1A1A;
+      }
+    }
+  }
+
+  .social-network {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 16px;
+
+    .social {
+      display: flex;
+      flex-direction: row;
+
+      .link {
+        padding-left: 8px;
+      }
+    }
+
+    .company {
+      color: rgba(26, 26, 26, 0.5);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      text-align: right;
+    }
+  }
+}

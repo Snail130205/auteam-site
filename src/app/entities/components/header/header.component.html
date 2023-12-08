@@ -1,0 +1,24 @@
+<div class="header">
+  <img src="./assets/icons/logo.svg">
+  <div class="menu-action">
+    <div *ngFor="let button of buttons">
+      <div [routerLink]="button.route"
+           routerLinkActive="active"
+           class="button">
+        {{ button.name }}
+      </div>
+    </div>
+  </div>
+  <div class="social-network">
+    <a href="https://vk.com/uralolimp"
+       target="_blank"
+       class="link">
+      <img src="./assets/icons/vk-fill.svg">
+    </a>
+    <a href="https://t.me/au_team_news"
+       target="_blank"
+       class="link">
+      <img src="./assets/icons/Telegram-fill.svg">
+    </a>
+  </div>
+</div>

@@ -1,0 +1,232 @@
+@import "misc";
+@import "palette";
+
+@mixin absoluteCenter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+@mixin animation($time) {
+    transition: all $time ease-in-out;
+    -webkit-transition: all $time ease-in-out; /** Chrome & Safari **/
+    -moz-transition: all $time ease-in-out; /** Firefox **/
+    -o-transition: all $time ease-in-out; /** Opera **/
+}
+
+@mixin wrapperFlex($dir: column, $jc: flex-start, $ai: flex-start) {
+    @include fullSize();
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin flexWrapper($dir: column, $jc: flex-start, $ai: flex-start) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin unselectable {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
+
+@mixin requiredLabel {
+    color: #f44336;
+    content: " *";
+    font-weight: bold;
+}
+
+@mixin fullSize {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin borderField {
+    background-color: $base;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.24), 0 0 8px rgba(0, 0, 0, 0.12);
+    border-radius: $border-radius;
+}
+
+@mixin textOverflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin maxWidth($width) {
+    @media (max-width: $width) {
+        @content;
+    }
+}
+
+@mixin w600 {
+    @include maxWidth(600px) {
+        @content;
+    }
+}
+
+@mixin preloader {
+    z-index: 999998;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #1D242B80;
+    overflow: hidden;
+
+    .logo {
+        @include absoluteCenter();
+        width: rem(48px);
+        height: rem(48px);
+        background-image: url('../../assets/icons/logo.svg');
+        background-size: cover;
+        background-position: center;
+        border-radius: 50%;
+        z-index: 999999;
+        transform: scale(1.5);
+        position: absolute;
+    }
+
+    .spinner {
+        @include absoluteCenter();
+        z-index: 999999;
+        width: 14.4px;
+        height: 14.4px;
+        border-radius: 14.4px;
+        box-shadow: 46px 0 0 0 rgb(41 121 255 / 25%), 35.2px 28.2px 0 0 rgb(41 121 255 / 50%), 10.16px 46.2px 0 0 rgb(41 121 255 / 75%), -21.16px 43.2px 0 0 rgb(41 121 255 / 90%), -39.2px 26.2px 0 0 $main-blue;
+        animation: spinner 1s infinite linear;
+    }
+
+    @keyframes spinner {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+/** Миксин для адаптивной верстки
+ $property - свойство
+ $startSize - Значение свойства на макетных размерах
+ $minSize - значение свойства на ширине $minSizeContainer
+ $maxWidthContainer - ширина макета
+ $type - Выбор режима использования миксина
+ $minSizeContainerWidth - минимальная ширина
+ */
+@mixin adaptiveValue($property, $startSize, $minSize, $maxWidthContainer, $type, $minSizeContainerWidth: 360) {
+    $addSize: $startSize - $minSize;
+    @if $type == 1 {
+        // только если меньше контейнера
+        #{$property}: $startSize + px;
+        @media(max-width: #{$minSizeContainerWidth + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minSizeContainerWidth + px}) / (#{$maxWidthContainer} - #{$minSizeContainerWidth})));
+        }
+    } @else if $type == 2 {
+        // только если больше контейнера
+        @media(min-width: #{$minSizeContainerWidth + px}) {
+            #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minSizeContainerWidth + px}) / (#{$maxWidthContainer} - #{$minSizeContainerWidth})));
+        }
+    } @else {
+        // Всегда
+        #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minSizeContainerWidth + px}) / (#{$maxWidthContainer} - #{$minSizeContainerWidth})));
+    }
+}
+
+// миксины для адаптива компонентов из библиотеки dx
+@mixin adaptiveCheckBox {
+    ::ng-deep {
+        .dx-checkbox-text {
+            @include adaptiveValue(font-size, 14, 12, 1920, 3);
+        }
+
+        .dx-checkbox-icon {
+            @include adaptiveValue(width, 20, 14, 1920, 3);
+            @include adaptiveValue(height, 20, 14, 1920, 3);
+        }
+
+        .dx-checkbox-checked .dx-checkbox-icon {
+            font-size: 14px;
+        }
+    }
+}
+
+@mixin adaptiveInput($width: 600px) {
+    ::ng-deep {
+        .dx-texteditor-input {
+            @include adaptiveValue(font-size, 16, 12, 1920, 3);
+        }
+
+        .dx-placeholder {
+            @include adaptiveValue(font-size, 16, 12, 1920, 3);
+        }
+
+        .dx-item-content.dx-list-item-content {
+            @include adaptiveValue(font-size, 14, 12, 1920, 3);
+        }
+    }
+
+    @media screen and (max-width: $width) {
+        ::ng-deep {
+            .dx-dropdowneditor-input-wrapper {
+                height: 40px;
+            }
+
+            .dx-texteditor-container {
+                height: 40px;
+            }
+
+            .icon-field i {
+                font-size: 18px;
+            }
+
+            .dx-editor-outlined.dx-texteditor-with-floating-label.dx-texteditor-empty .dx-texteditor-label .dx-label span,
+            .dx-editor-outlined.dx-texteditor-with-floating-label.dx-texteditor-empty.dx-state-disabled .dx-texteditor-label .dx-label span {
+                font-size: 12px !important;
+            }
+
+            .dx-texteditor.dx-editor-outlined .dx-texteditor-input {
+                padding: 22px 16px 10px 8px;
+            }
+
+            .dx-editor-outlined.dx-texteditor-with-floating-label:not(.dx-texteditor-empty) .dx-texteditor-label .dx-label span {
+                transform: translate(0,-8px) !important;
+                font-size: 10px !important;
+            }
+
+            .dx-editor-outlined.dx-texteditor-with-floating-label.dx-state-focused .dx-texteditor-label .dx-label span {
+                font-size: 10px !important;
+            }
+
+            .dx-editor-outlined .dx-texteditor-label .dx-label-before {
+                min-width: 8px;
+            }
+        }
+    }
+}
+
+@mixin adaptiveButton {
+    ::ng-deep {
+        .dx-button {
+            @include adaptiveValue(height, 48, 40, 1920, 3);
+        }
+
+        .dx-button-text {
+            @include adaptiveValue(font-size, 14, 12, 1920, 3);
+        }
+    }
+}
+
+@mixin adaptiveDx {
+    @include adaptiveInput;
+    @include adaptiveButton;
+    @include adaptiveCheckBox;
+}
