@@ -1,0 +1,107 @@
+.news {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1100px;
+  width: 100%;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 30px;
+
+    .title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 34px;
+      padding-bottom: 16px;
+      margin-right: 8px;
+
+      @media screen and (max-width: 650px) and (min-width: 490px){
+        font-size: 18px;
+        line-height: 26px;
+      }
+
+      @media screen and (max-width: 489px){
+        font-size: 12px;
+        line-height: 17px;
+        padding-bottom: 8px;
+      }
+    }
+
+    .description {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      padding-bottom: 16px;
+      margin-right: 8px;
+
+      @media screen and (max-width: 650px) and (min-width: 490px){
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      @media screen and (max-width: 489px){
+        font-size: 8px;
+        line-height: 12px;
+        padding-bottom: 8px;
+      }
+    }
+
+    .image {
+      max-width: 400px;
+      width: 40%;
+      max-height: 240px;
+      border-radius: 16px;
+
+      @media screen and (max-width: 650px) and (min-width: 490px){
+        min-width: 230px;
+      }
+
+      @media screen and (max-width: 489px){
+        min-width: 170px;
+      }
+    }
+
+    .button {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      width: 111px;
+      color: white;
+      background: rgba(36, 99, 235, 1);
+      text-align: center;
+
+      @media screen and (max-width: 650px) and (min-width: 490px){
+        font-size: 12px;
+        line-height: 18px;
+        padding: 6px 12px;
+        width: 84px;
+      }
+
+      @media screen and (max-width: 489px){
+        font-size: 8px;
+        line-height: 12px;
+        padding: 4px 8px;
+        width: 56px;
+      }
+
+      &:hover {
+        background: rgba(29, 79, 215, 1);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .line {
+    height: 1px;
+    max-width: 1200px;
+    width: 100%;
+    margin-bottom: 30px;
+    background: #F4F4F5;
+  }
+}

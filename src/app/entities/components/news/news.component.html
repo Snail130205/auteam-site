@@ -1,1 +1,22 @@
-<p>news works!</p>
+<div class="news">
+  <div *ngFor="let news of newsPreview">
+    <div class="container">
+      <div class="info">
+        <div class="title">
+          {{ news.title }}
+        </div>
+        <div class="description">
+          {{ news.description }}
+        </div>
+        <div [routerLink]="[ page === 'news' ? '/news' : '/main', news.id]"
+             class="button">
+          Подробнее
+        </div>
+      </div>
+      <img [src]="news.image"
+           class="image">
+    </div>
+    <div class="line">
+    </div>
+  </div>
+</div>

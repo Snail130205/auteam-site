@@ -5,6 +5,23 @@
   width: 100%;
   padding: 16px 16px 64px 16px;
 
+  @media screen and (max-width: 650px) and (min-width: 490px){
+    padding-bottom: 48px;
+  }
+
+  @media screen and (max-width: 489px){
+    padding-bottom: 32px;
+  }
+  .image {
+    @media screen and (max-width: 650px) and (min-width: 490px){
+      width: 96px;
+    }
+
+    @media screen and (max-width: 489px){
+      width: 64px;
+    }
+  }
+
   .social-network,
   .menu-action {
     display: flex;
@@ -12,6 +29,16 @@
 
     .link {
       padding-left: 8px;
+
+      .image {
+        @media screen and (max-width: 650px) and (min-width: 490px){
+          width: 18px;
+        }
+
+        @media screen and (max-width: 489px){
+          width: 12px;
+        }
+      }
     }
     .button {
       font-family: Inter, sans-serif;
@@ -21,6 +48,17 @@
       align-items: center;
       color: #afafaf;
       padding: 8px;
+
+      @media screen and (max-width: 650px) and (min-width: 490px){
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      @media screen and (max-width: 489px){
+        font-size: 8px;
+        line-height: 12px;
+        padding: 4px;
+      }
 
       &:hover,
       &.active {

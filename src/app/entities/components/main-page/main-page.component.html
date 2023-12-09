@@ -17,6 +17,31 @@
     Наш профиль
   </div>
   <div class="info-button">
+    <div *ngFor="let tab of tabs"
+         class="tab">
+      <img [src]="tab.iconPatch"
+           class="image">
+      <div class="title">
+        {{ tab.title }}
+      </div>
+      <div class="text">
+        {{ tab.text }}
+      </div>
+    </div>
+  </div>
 
+  <div class="news">
+    <div class="title">
+      Новости
+    </div>
+    <div class="info">
+      <div class="description">
+        Актуальные новости за последние 2 недели
+      </div>
+      <div class="pagination">
+      </div>
+    </div>
+    <app-news [page]="'main'">
+    </app-news>
   </div>
 </div>

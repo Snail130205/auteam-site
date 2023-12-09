@@ -1,0 +1,53 @@
+.olympiad {
+  padding: 0 54px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+
+    .image {
+      width: 50%;
+      border-radius: 16px;
+    }
+
+    .main-text {
+      width: 35%;
+      text-align: left;
+
+      .title {
+        font-size: 48px;
+        line-height: 58px;
+        font-weight: 700;
+        margin-bottom: 24px;
+      }
+
+      .description {
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .stage {
+    background: #F4F4F5;
+    border-radius: 8px;
+    text-align: center;
+    padding: 12px 16px;
+    margin: 32px 0 16px 0;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+
+    span {
+      color: #2463EB;
+    }
+  }
+}
