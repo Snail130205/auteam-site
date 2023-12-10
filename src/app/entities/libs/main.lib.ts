@@ -5,7 +5,7 @@ export abstract class MainLib {
   public static readonly menuButtons: IMenuButton[] = [
     {
       name: 'Главная',
-      route: ''
+      route: 'main'
     },
     {
       name: 'Новости',
@@ -25,7 +25,7 @@ export abstract class MainLib {
     {
       iconPatch: './assets/icons/linux.svg',
       title: 'Linux System',
-      text: 'Операционная система с открытам исходным кодом'
+      text: 'Операционная система с открытым исходным кодом'
     },
     {
       iconPatch: './assets/icons/network.svg',

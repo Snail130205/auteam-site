@@ -8,10 +8,6 @@ import {NewsPageComponent} from "./entities/components/news-page/news-page.compo
 
 export const routes: Routes = [
   {
-    path: '',
-    component: MainPageComponent,
-  },
-  {
     path: 'main',
     component: MainPageComponent,
   },

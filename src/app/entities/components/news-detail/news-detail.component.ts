@@ -16,7 +16,7 @@ export class NewsDetailComponent implements OnInit {
   constructor(private readonly _router: Router) {
   }
   public ngOnInit(): void {
-    this.mainPage = this._router.url.indexOf('news') !== -1 ? '/news' : '';
+    this.mainPage = this._router.url.indexOf('news') !== -1 ? '/news' : '/main';
   }
 
 }
