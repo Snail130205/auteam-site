@@ -1,3 +1,11 @@
- <app-header></app-header>
-  <router-outlet></router-outlet>
-  <app-footer></app-footer>
+<app-loader *ngIf="isLoading"></app-loader>
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+<dx-toast [(visible)]="isVisible"
+          [type]="type"
+          [message]="message"
+          [displayTime]="4000"
+          maxWidth="400"
+          position="top"
+></dx-toast>

@@ -5,6 +5,7 @@ import {OlympiadComponent} from "./entities/components/olympiad/olympiad.compone
 import {InformationComponent} from "./entities/components/information/information.component";
 import {NewsDetailComponent} from "./entities/components/news-detail/news-detail.component";
 import {NewsPageComponent} from "./entities/components/news-page/news-page.component";
+import {ErrorPageComponent} from "./entities/components/error-page/error-page.component";
 
 export const routes: Routes = [
   {
@@ -31,4 +32,13 @@ export const routes: Routes = [
     path: 'information',
     component: InformationComponent,
   },
+  {
+    path: '',
+    redirectTo: 'main',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: ErrorPageComponent
+  }
 ];

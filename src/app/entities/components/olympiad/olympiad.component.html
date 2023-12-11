@@ -14,17 +14,352 @@
     <img src="./assets/icons/averin.jpeg"
          class="image">
   </div>
-  <div class="stage">
-    До старта
-    <span>
+  <div class="olympiad-info">
+    <div class="stage">
+      До старта
+      <span>
       1 этапа
     </span>
-    осталось
+      осталось
+    </div>
+    <div class="time">
+      12 дней 03 часов 01 минут
+    </div>
+    <div class="stage">
+      Команд зарегистрировано
+    </div>
+    <div class="time">
+      1234
+    </div>
   </div>
-  <div class="time">
-    12 дней 03 часов 01 минут
+
+  <div class="information">
+    <div class="title">
+      Об олимпиаде
+    </div>
+    <div class="box">
+      <img src="./assets/icons/goal.svg">
+      <div class="text">
+        <div class="title">
+          Цель олимпиады
+        </div>
+        <div class="description">
+          Lorem ipsum dolor sit amet consectetur. Lobortis cras eu senectus ac.
+          Tristique est odio quis aenean vestibulum. Lacus nunc lorem nec molestie fusce
+          eget potenti sed facilisis. Metus pharetra nam nunc vel. Quis quam aenean
+          quis venenatis dapibus ridiculus ac cursus. Sodales nec euismod neque quis
+          dolor sit egestas. Et vel luctus turpis tortor varius sed donec sed. Vel venenatis
+          condimentum nulla id elit commodo. Sed pulvinar neque montes sapien vitae turpis fermentum.
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      <img src="./assets/icons/player.svg">
+      <div class="text">
+        <div class="title">
+          Участники
+        </div>
+        <div class="description">
+          Lorem ipsum dolor sit amet consectetur. Lobortis cras eu senectus ac.
+          Tristique est odio quis aenean vestibulum. Lacus nunc lorem nec molestie fusce
+          eget potenti sed facilisis. Metus pharetra nam nunc vel. Quis quam aenean
+          quis venenatis dapibus ridiculus ac cursus. Sodales nec euismod neque quis
+          dolor sit egestas. Et vel luctus turpis tortor varius sed donec sed. Vel venenatis
+          condimentum nulla id elit commodo. Sed pulvinar neque montes sapien vitae turpis fermentum.
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="stage">
-    Команд зарегистрировано
+
+  <div class="form"
+       [formGroup]="form">
+    <div class="title">
+      Подать заявку на участие
+    </div>
+    <div class="form-container">
+      <div class="box-column">
+        <div class="label">
+          Полное название образовательного учреждения
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="education">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="Поле обязательно для заполнения">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="stringLength"
+              [min]="5"
+              message="Поле заполнено неверно">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="box">
+        <div class="label">
+          ФИО руководителя образовательного учреждения
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="educationalFullName"
+                     class="left">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="Поле обязательно для заполнения">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="pattern"
+              pattern="^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$"
+              message="Поле заполнено неверно. Должно быть минимум два слова, начинающиеся с заглавной буквы.
+              Строка не должна начинаться с пробела">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
+      </div>
+      <div class="box">
+        <div class="label-right">
+          Тип образовательного учреждения
+        </div>
+        <dx-select-box stylingMode="outlined"
+                       [dataSource]="educationTypes"
+                       displayExpr="name"
+                       valueExpr="id"
+                       formControlName="educationalType"
+                       label="Выберите тип учебного заведения..."
+                       labelMode="floating"
+                       class="right">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="Поле обязательно для заполнения">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-select-box>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="box">
+        <div class="label">
+          Должность руководителя образовательного учреждения
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="educationalPosition"
+                     class="left">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="Поле обязательно для заполнения">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="pattern"
+              pattern="\w+"
+              message="Поле заполнено неверно. Строка не должна начинаться с пробела">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
+      </div>
+      <div class="box">
+        <div class="label-right">
+          ФИО куратора
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="teamLeadName"
+                     class="right">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="Поле обязательно для заполнения">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="pattern"
+              pattern="^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$"
+              message="Поле заполнено неверно. Должно быть минимум два слова, начинающиеся с заглавной буквы.
+              Строка не должна начинаться с пробела">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
+      </div>
+    </div>
+
+
+    <div class="form-container">
+      <div class="box">
+        <div class="label">
+          Телефон куратора
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="teamLeadPhone"
+                     mask="+7 (X00) 000-0000"
+                     [maskRules]="rules"
+                     class="left"
+        ></dx-text-box>
+      </div>
+      <div class="box">
+        <div class="label-right">
+          Электронная почта куратора
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="teamLeadEmail"
+                     class="right">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="Поле обязательно для заполнения">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="email"
+              message="Электронная почта введена неверно">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="box-column">
+        <div class="label">
+          Название команды
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="teamName"
+                     width="100%">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="Поле обязательно для заполнения">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="stringLength"
+              [min]="5"
+              [max]="20"
+              message="Поле заполнено неверно. Минимальная длина названия - 5 символов, максимальная - 20">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="box">
+        <div class="label">
+          ФИО первого участника
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="participantFullName1"
+                     class="left">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="Поле обязательно для заполнения">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="pattern"
+              pattern="^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$"
+              message="Поле заполнено неверно. Должно быть минимум два слова, начинающиеся с заглавной буквы.
+              Строка не должна начинаться с пробела">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
+      </div>
+      <div class="box">
+        <div class="label-right">
+          ФИО второго участника
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="participantFullName2"
+                     class="right">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="Поле обязательно для заполнения">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="pattern"
+              pattern="^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$"
+              message="Поле заполнено неверно. Должно быть минимум два слова, начинающиеся с заглавной буквы.
+              Строка не должна начинаться с пробела">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="box">
+        <div class="label">
+          Телефон первого участика
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="participantPhone1"
+                     mask="+7 (X00) 000-0000"
+                     [maskRules]="rules"
+                     class="left"
+        ></dx-text-box>
+      </div>
+      <div class="box">
+        <div class="label-right">
+          Телефон второго участника
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="participantPhone2"
+                     mask="+7 (X00) 000-0000"
+                     [maskRules]="rules"
+                     class="right"
+        ></dx-text-box>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <div class="box">
+        <div class="label">
+          Почта первого участника
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="participantEmail1"
+                     class="left">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="Поле обязательно для заполнения">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="email"
+              message="Электронная почта введена неверно">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
+      </div>
+      <div class="box">
+        <div class="label-right">
+          Почта второго участника
+        </div>
+        <dx-text-box stylingMode="outlined"
+                     formControlName="participantEmail2"
+                     class="right">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              message="Поле обязательно для заполнения">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="email"
+              message="Электронная почта введена неверно">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
+      </div>
+    </div>
+    <dx-button
+               (click)="registration()"
+               text="Зарегистрироваться"
+               stylingMode="contained"
+               type="default"
+               class="button"
+    ></dx-button>
   </div>
 </div>

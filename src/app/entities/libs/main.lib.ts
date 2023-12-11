@@ -52,5 +52,20 @@ export abstract class MainLib {
       title: 'Integration',
       text: 'Интеграция различных систем и платформ'
     }
+  ];
+
+  public static readonly educationTypes: any[] = [
+    {
+      id: 1,
+      name: 'Школа'
+    },
+    {
+      id: 2,
+      name: 'ВУЗ'
+    },
+    {
+      id: 3,
+      name: 'Колледж'
+    },
   ]
 }

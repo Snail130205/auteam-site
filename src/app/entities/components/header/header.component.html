@@ -1,6 +1,7 @@
 <div class="header">
   <img src="./assets/icons/logo.svg"
-  class="image">
+       routerLink="/main"
+       class="image">
   <div class="menu-action">
     <div *ngFor="let button of buttons">
       <div [routerLink]="button.route"
@@ -15,13 +16,13 @@
        target="_blank"
        class="link">
       <img src="./assets/icons/vk-fill.svg"
-      class="image">
+           class="image">
     </a>
     <a href="https://t.me/au_team_news"
        target="_blank"
        class="link">
       <img src="./assets/icons/Telegram-fill.svg"
-      class="image">
+           class="image">
     </a>
   </div>
 </div>
