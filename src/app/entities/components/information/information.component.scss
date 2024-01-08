@@ -25,4 +25,121 @@
       line-height: 28px;
     }
   }
+
+  .team,
+  .box {
+    width: 100%;
+    padding: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    border-radius: 12px;
+    background: #fdfdfd;
+    border: 1px solid rgba(26, 26, 26, 0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+
+    @media screen and (max-width: 750px) and (min-width: 490px) {
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    @media screen and (max-width: 489px) {
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .title {
+      font-size: 20px;
+      line-height: 32px;
+
+      @media screen and (max-width: 750px) and (min-width: 490px) {
+        font-size: 15px;
+        line-height: 24px;
+      }
+
+      @media screen and (max-width: 489px) {
+        font-size: 10px;
+        line-height: 16px;
+      }
+    }
+
+    table {
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -khtml-border-radius: 10px;
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 16px;
+      display: block;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .description {
+      font-size: 18px;
+      line-height: 30px;
+      font-weight: 400;
+
+      @media screen and (max-width: 750px) and (min-width: 561px) {
+        font-size: 14px;
+        line-height: 23px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 9px;
+        line-height: 15px;
+      }
+    }
+
+    .img {
+      border-radius: 50%;
+      margin-right: 16px;
+
+      @media screen and (max-width: 850px) and (min-width: 561px) {
+        width: 100px;
+      }
+
+      @media screen and (max-width: 560px) {
+        width: 60px;
+      }
+    }
+  }
+
+  .team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    border: none;
+    box-shadow: none;
+
+
+    .block {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      margin-bottom: 32px;
+
+      .description {
+        margin-bottom: 16px;
+      }
+    }
+
+    .line {
+      height: 1px;
+      max-width: 1200px;
+      width: 100%;
+      margin-bottom: 32px;
+      background: #F4F4F5;
+    }
+  }
 }

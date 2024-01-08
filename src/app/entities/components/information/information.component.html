@@ -2,4 +2,125 @@
   <div class="title">
     {{'ABOUT_US' | translate}}
   </div>
+  <div class="team">
+    <div class="block">
+        <img src="https://www.infosystems.ru/upload/resize_cache/iblock/2f0/y2g9yvsee2dprbtbyh7qlobux1bdho7g/160_160_2/novyy-Uymin-Anton.jpg"
+             class="img">
+      <div class="text">
+        <div class="title">
+          {{'UYMIN' | translate}}
+        </div>
+        <div class="description">
+          {{'UYMIN_WORK' | translate}}
+        </div>
+        <div class="description">
+          {{'UYMIN_INSTRUCTOR' | translate}}
+        </div>
+        <div class="description">
+          {{'UYMIN_ACTIVITY' | translate}}
+        </div>
+        <div class="description">
+          {{'UYMIN_TEACH' | translate}}
+          <div *ngFor="let t of teach">
+            <li>{{ t | translate }}</li>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="line">
+    </div>
+    <div class="block">
+      <img src="https://www.infosystems.ru/upload/resize_cache/iblock/4f2/pzgb2fzuyfhqsnktqukzw31b3swjiiyv/160_160_2/Morozov-Ilya.jpg"
+           class="img">
+      <div class="text">
+        <div class="title">
+          {{'MOROZOV' | translate}}
+        </div>
+        <div class="description">
+          {{'MOROZOV_WORK' | translate}}
+        </div>
+        <div class="description">
+          {{'MOROZOV_ACTIVITY' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="text">
+      <div class="title">
+        {{'ABOUT_PROJECT' | translate}}
+      </div>
+      <div class="description">
+        {{'ABOUT_PROJECT_TEXT' | translate}}
+      </div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="text">
+      <div class="title">
+        {{'WHAT_IS_OLYMPIAD' | translate}}
+      </div>
+      <div class="description">
+        {{'WHAT_IS_OLYMPIAD_TEXT_1' | translate}}
+        <br>
+        {{'WHAT_IS_OLYMPIAD_TEXT_2' | translate}}
+      </div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="text">
+      <div class="title">
+        {{'HISTORY' | translate}}
+      </div>
+      <div class="description">
+        {{'HISTORY_TEXT' | translate}}
+        <br>
+        <table>
+          <tr>
+            <th>{{'YEARS' | translate}}</th>
+            <th>{{'NUMBER_PART' | translate}}</th>
+            <th>{{'VENUE' | translate}}</th>
+            <th>{{'PARTNERS' | translate}}</th>
+          </tr>
+          <tr>
+            <td>2009-2018</td>
+            <td>50-3000</td>
+            <td>{{'URTC' | translate}}</td>
+            <td>{{'PARTNERS_1' | translate}}</td>
+          </tr>
+          <tr>
+            <td>2019</td>
+            <td>{{'COUNT_2019' | translate}}</td>
+            <td>{{'URTC' | translate}}</td>
+            <td>{{'PARTNERS_1' | translate}}</td>
+          </tr>
+          <tr>
+            <td>2022</td>
+            <td>{{'COUNT_2022' | translate}}</td>
+            <td>{{'MIEM' | translate}}</td>
+            <td>{{'PARTNERS_3' | translate}}</td>
+          </tr>
+          <tr>
+            <td>2024</td>
+            <td>{{'COUNT_2023' | translate}}</td>
+            <td>{{'GUBKIN' | translate}}</td>
+            <td>{{'PARTNERS_4' | translate}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="box">
+    <div class="text">
+      <div class="title">
+        {{'OPPORTUNITIES' | translate}}
+      </div>
+      <div class="description">
+        {{'OPPORTUNITIES_TITLE' | translate}}
+      </div>
+      <div *ngFor="let text of opportunitiesList" class="description">
+        <li>{{text | translate}}</li>
+      </div>
+    </div>
+  </div>
 </div>
