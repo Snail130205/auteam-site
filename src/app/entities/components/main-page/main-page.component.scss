@@ -131,12 +131,27 @@
     .title {
       padding-bottom: 16px;
 
-      @media screen and (max-width: 650px) and (min-width: 490px){
+      @media screen and (max-width: 815px) and (min-width: 490px){
         padding-bottom: 12px;
+        text-align: center;
       }
 
       @media screen and (max-width: 489px){
+        text-align: center;
         padding-bottom: 8px;
+      }
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      margin-bottom: 44px;
+
+      @media screen and (max-width: 815px){
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
     }
 
@@ -144,18 +159,20 @@
       font-size: 18px;
       font-weight: 400;
       line-height: 30px;
-      margin-bottom: 44px;
+      margin: auto 100px auto 0;
 
-      @media screen and (max-width: 650px) and (min-width: 490px){
+      @media screen and (max-width: 815px) and (min-width: 490px){
         font-size: 12px;
         line-height: 22px;
         margin-bottom: 30px;
+        margin-right: 0;
       }
 
       @media screen and (max-width: 489px){
         font-size: 8px;
         line-height: 15px;
         margin-bottom: 16px;
+        margin-right: 0;
       }
     }
   }

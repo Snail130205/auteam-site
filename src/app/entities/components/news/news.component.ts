@@ -1,45 +1,36 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input, OnInit} from '@angular/core';
 import {IPreviewNews} from "../../interfaces/preview-news.interface";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {MainService} from "../../services/main.service";
+import {routes} from "../../../app.routes";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-news',
   standalone: true,
   imports: [
     NgForOf,
-    RouterLink
+    RouterLink,
+    NgIf,
+    TranslateModule
   ],
   templateUrl: './news.component.html',
   styleUrl: './news.component.scss'
 })
-export class NewsComponent {
+export class NewsComponent implements OnInit {
   @Input()
   public page: string = '';
-  public newsPreview: IPreviewNews[] = [
-    {
-      id: 1,
-      title: 'Регистрация',
-      description: 'Это замечательная возможность проверить ' +
-        'свои навыки и знания в области сетевых технологий, а также ' +
-        'продемонстрировать...',
-      image: './assets/icons/b4ee94aa20bd9af0dafd3b4d62332c08.jpeg'
-    },
-    {
-      id: 2,
-      title: 'Регистрация',
-      description: 'Это замечательная возможность проверить ' +
-        'свои навыки и знания в области сетевых технологий, а также ' +
-        'продемонстрировать...',
-      image: './assets/icons/b4ee94aa20bd9af0dafd3b4d62332c08.jpeg'
-    },
-    {
-      id: 3,
-      title: 'Регистрация',
-      description: 'Это замечательная возможность проверить ' +
-        'свои навыки и знания в области сетевых технологий, а также ' +
-        'продемонстрировать...',
-      image: './assets/icons/b4ee94aa20bd9af0dafd3b4d62332c08.jpeg'
-    },
-  ];
+
+  @Input()
+  public newsPreview: any[] = [];
+
+  private readonly _mainService: MainService = inject(MainService);
+
+  ngOnInit(): void {
+  }
+
+  public routesPage(news: any): void {
+    this._mainService.newsDetail = news;
+  }
 }

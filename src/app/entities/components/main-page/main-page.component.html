@@ -1,20 +1,18 @@
 <div class="main-page">
   <div class="main-text">
-    Стараемся рассказать и показать
+    {{ 'MAIN_TEXT_1' | translate}}
     <span>
-      современные IT-технологии
+      {{ 'MAIN_TEXT_2' | translate}}
     </span>
     <br>
-    Привлечь в увлекательный
-    <span>
-      мир IT
-    </span>
-    , как можно больше будущих
+    {{ 'MAIN_TEXT_3' | translate}}
     <br>
-    специалистов и профессионалов
+    <span>
+      {{ 'MAIN_TEXT_4' | translate}}
+    </span>
   </div>
   <div class="title">
-    Наш профиль
+    {{'PROFILE' | translate}}
   </div>
   <div class="info-button">
     <div *ngFor="let tab of tabs"
@@ -22,26 +20,33 @@
       <img [src]="tab.iconPatch"
            class="image">
       <div class="title">
-        {{ tab.title }}
+        {{'INFORMATION_TAB.' + tab.title + '.TITLE' | translate}}
       </div>
       <div class="text">
-        {{ tab.text }}
+        {{'INFORMATION_TAB.' + tab.title + '.TEXT' | translate}}
       </div>
     </div>
   </div>
 
   <div class="news">
     <div class="title">
-      Новости
+      {{'NEWS' | translate}}
     </div>
     <div class="info">
       <div class="description">
-        Актуальные новости за последние 2 недели
+        {{'LATEST_NEWS' | translate}}
       </div>
-      <div class="pagination">
-      </div>
+      <app-pagination *ngIf="totalPages > 1"
+                      [current]="current"
+                      [total]="totalPages"
+                      [nav]="true"
+                      (next)="next($event)"
+                      (previous)="previous($event)"
+                      (goTo)="goTo($event)">
+      </app-pagination>
     </div>
-    <app-news [page]="'main'">
+    <app-news [newsPreview]="getNewsForPage(current)"
+              [page]="'main'">
     </app-news>
   </div>
 </div>

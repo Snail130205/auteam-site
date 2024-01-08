@@ -55,6 +55,7 @@
       width: 40%;
       max-height: 240px;
       border-radius: 16px;
+      border: 1px solid rgba(26, 26, 26, 0.1);
 
       @media screen and (max-width: 650px) and (min-width: 490px){
         min-width: 230px;
@@ -103,5 +104,9 @@
     width: 100%;
     margin-bottom: 30px;
     background: #F4F4F5;
+  }
+
+  .info {
+    width: 60%;
   }
 }

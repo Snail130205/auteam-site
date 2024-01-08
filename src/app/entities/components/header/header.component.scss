@@ -65,5 +65,51 @@
         color: #1A1A1A;
       }
     }
+
+    // styles.scss
+
+    .language-switcher {
+      display: inline-block;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .select-wrapper {
+      display: flex;
+    }
+
+    .select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      margin-left: 8px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: Inter, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      align-items: center;
+      color: #afafaf;
+
+      @media screen and (max-width: 650px) and (min-width: 490px){
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      @media screen and (max-width: 489px){
+        font-size: 8px;
+        line-height: 12px;
+      }
+
+      &:focus {
+        outline: none;
+        border: 1px solid #007bff;
+      }
+    }
+
+    .option {
+      font-size: 14px;
+    }
   }
 }

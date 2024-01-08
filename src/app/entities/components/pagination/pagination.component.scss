@@ -1,0 +1,131 @@
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  user-select: none;
+  margin: 0 4px;
+}
+
+a {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: rgba(26, 26, 26, 0.5);
+  min-width: 30px;
+  text-decoration: none;
+
+  @media screen and (max-width: 650px) and (min-width: 490px){
+    font-size: 10px;
+    line-height: 12px;
+    min-width: 20px;
+  }
+
+  @media screen and (max-width: 489px){
+    font-size: 7px;
+    line-height: 10px;
+    min-width: 10px;
+  }
+}
+
+a.current,
+a:not(.more):hover {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: black;
+
+  @media screen and (max-width: 650px) and (min-width: 490px){
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  @media screen and (max-width: 489px){
+    font-size: 7px;
+    line-height: 10px;
+  }
+}
+
+a.more:hover,
+a.current {
+  cursor: default;
+  text-decoration: none;
+}
+
+.buttons {
+  background: rgba(253, 253, 253, 1);
+  border-radius: 8px;
+  border: 1px solid rgb(231, 231, 231);
+  color: black;
+  font-weight: 600;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 650px) and (min-width: 490px){
+    width: 29px;
+    height: 29px;
+    border-radius: 6px;
+  }
+
+  @media screen and (max-width: 489px){
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+  }
+}
+
+button[disabled] {
+  background: rgba(253, 253, 253, 1);
+  border-radius: 8px;
+  border: 1px solid rgb(236, 236, 236);
+  font-weight: 600;
+  width: 44px;
+  height: 44px;
+  color: gray;
+
+  @media screen and (max-width: 650px) and (min-width: 490px){
+    width: 29px;
+    height: 29px;
+    border-radius: 6px;
+  }
+
+  @media screen and (max-width: 489px){
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+  }
+}
+
+.image {
+  @media screen and (max-width: 650px) and (min-width: 490px){
+    width: 4px;
+  }
+
+  @media screen and (max-width: 489px){
+    width: 4px;
+  }
+}

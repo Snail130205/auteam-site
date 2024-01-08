@@ -1,11 +1,19 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, importProvidersFrom, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
+import { Router, RouterOutlet} from '@angular/router';
 import {HeaderComponent} from "./entities/components/header/header.component";
 import {FooterComponent} from "./entities/components/footer/footer.component";
 import {LoaderComponent} from "./core/loader/loader.component";
 import {MainService} from "./entities/services/main.service";
 import {DxToastModule} from "devextreme-angular";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {HttpClient, provideHttpClient} from "@angular/common/http";
+import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
+import {bootstrapApplication} from "@angular/platform-browser";
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 @Component({
   selector: 'app-root',
@@ -22,7 +30,14 @@ export class AppComponent implements OnInit {
   public isVisible: boolean = false;
   type: string = '';
 
+  constructor(public translate: TranslateService) {
+    translate.addLangs(['EN', 'RU']);
+    translate.setDefaultLang('RU');
+  }
+
   public ngOnInit(): void {
+    this._mainService.getNews().then();
+
     this._mainService.loader$
       .subscribe((loader: boolean) => this.isLoading = loader);
 

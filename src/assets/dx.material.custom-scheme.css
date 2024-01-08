@@ -8496,7 +8496,6 @@ dx-tag-box:has(.dx-tag) .dx-texteditor-input-container .dx-texteditor-input {
     position: absolute;
     font-weight: 400;
     color: #2979ff;
-    content: "\f005";
     font-family: DXIcons;
     font-size: 24px;
     height: 24px;

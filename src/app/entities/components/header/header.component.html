@@ -7,7 +7,7 @@
       <div [routerLink]="button.route"
            routerLinkActive="active"
            class="button">
-        {{ button.name }}
+        {{ button.name | translate}}
       </div>
     </div>
   </div>
@@ -24,5 +24,12 @@
       <img src="./assets/icons/Telegram-fill.svg"
            class="image">
     </a>
+    <div class="language-switcher">
+      <div class="select-wrapper">
+        <select class="select" [(ngModel)]="selectedLanguage" (change)="changeLanguage()">
+          <option *ngFor="let lang of supportedLanguages" [value]="lang" class="option">{{ lang }}</option>
+        </select>
+      </div>
+    </div>
   </div>
 </div>

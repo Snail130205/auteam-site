@@ -2,13 +2,10 @@
   <div class="container">
     <div class="main-text">
       <div class="title">
-        Олимпиада основы сетевых технологий
-        им. Аверина В.Г.
+        {{'OLYMPIAD_NAME' | translate}}
       </div>
       <div class="description">
-        Ежегодное соревнование, которое проверяет знания и навыки участников в области
-        сетевых технологий. Олимпиада организована командой AU_TEAM и открыта для студентов
-        различных учебных заведений.
+        {{'OLYMPIAD_DESCRIPTION' | translate}}
       </div>
     </div>
     <img src="./assets/icons/averin.jpeg"
@@ -16,56 +13,48 @@
   </div>
   <div class="olympiad-info">
     <div class="stage">
-      До старта
+      {{ 'COUNTDOWN_SECTION.BEFORE_START' | translate }}
       <span>
-      1 этапа
-    </span>
-      осталось
+    1 {{ 'COUNTDOWN_SECTION.STAGE' | translate }}
+  </span>
+      {{ 'COUNTDOWN_SECTION.REMAINING' | translate }}
     </div>
     <div class="time">
-      12 дней 03 часов 01 минут
+      {{ timerText }}
     </div>
     <div class="stage">
-      Команд зарегистрировано
+      {{'REGISTERED' | translate}}
     </div>
     <div class="time">
-      1234
+      {{ teamCount }}
     </div>
   </div>
 
   <div class="information">
     <div class="title">
-      Об олимпиаде
+      {{'ABOUT_OLYMPIAD' | translate}}
     </div>
     <div class="box">
-      <img src="./assets/icons/goal.svg">
+      <img src="./assets/icons/goal.svg"
+      class="img">
       <div class="text">
         <div class="title">
-          Цель олимпиады
+          {{'GOAL_OLYMPIAD' | translate}}
         </div>
         <div class="description">
-          Lorem ipsum dolor sit amet consectetur. Lobortis cras eu senectus ac.
-          Tristique est odio quis aenean vestibulum. Lacus nunc lorem nec molestie fusce
-          eget potenti sed facilisis. Metus pharetra nam nunc vel. Quis quam aenean
-          quis venenatis dapibus ridiculus ac cursus. Sodales nec euismod neque quis
-          dolor sit egestas. Et vel luctus turpis tortor varius sed donec sed. Vel venenatis
-          condimentum nulla id elit commodo. Sed pulvinar neque montes sapien vitae turpis fermentum.
+          {{'GOAL_OLYMPIAD_TEXT' | translate}}
         </div>
       </div>
     </div>
     <div class="box">
-      <img src="./assets/icons/player.svg">
+      <img src="./assets/icons/player.svg"
+           class="img">
       <div class="text">
         <div class="title">
-          Участники
+          {{'PARTICIPANTS' | translate}}
         </div>
         <div class="description">
-          Lorem ipsum dolor sit amet consectetur. Lobortis cras eu senectus ac.
-          Tristique est odio quis aenean vestibulum. Lacus nunc lorem nec molestie fusce
-          eget potenti sed facilisis. Metus pharetra nam nunc vel. Quis quam aenean
-          quis venenatis dapibus ridiculus ac cursus. Sodales nec euismod neque quis
-          dolor sit egestas. Et vel luctus turpis tortor varius sed donec sed. Vel venenatis
-          condimentum nulla id elit commodo. Sed pulvinar neque montes sapien vitae turpis fermentum.
+          {{'PARTICIPANTS_TEXT' | translate}}
         </div>
       </div>
     </div>
@@ -74,24 +63,19 @@
   <div class="form"
        [formGroup]="form">
     <div class="title">
-      Подать заявку на участие
+      {{ 'APPLY_FOR_PARTICIPATION' | translate }}
     </div>
     <div class="form-container">
       <div class="box-column">
         <div class="label">
-          Полное название образовательного учреждения
+          {{'INSTITUTION_FULL_NAME' | translate}}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="education">
           <dx-validator>
             <dxi-validation-rule
               type="required"
-              message="Поле обязательно для заполнения">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="stringLength"
-              [min]="5"
-              message="Поле заполнено неверно">
+              [message]="'FIELD_REQUIRED' | translate">
             </dxi-validation-rule>
           </dx-validator>
         </dx-text-box>
@@ -101,7 +85,7 @@
     <div class="form-container">
       <div class="box">
         <div class="label">
-          ФИО руководителя образовательного учреждения
+          {{'LEADER_FULL_NAME' | translate}}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="educationalFullName"
@@ -109,33 +93,28 @@
           <dx-validator>
             <dxi-validation-rule
               type="required"
-              message="Поле обязательно для заполнения">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="pattern"
-              pattern="^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$"
-              message="Поле заполнено неверно. Должно быть минимум два слова, начинающиеся с заглавной буквы.
-              Строка не должна начинаться с пробела">
+              [message]="'FIELD_REQUIRED' | translate">
             </dxi-validation-rule>
           </dx-validator>
         </dx-text-box>
       </div>
       <div class="box">
         <div class="label-right">
-          Тип образовательного учреждения
+          {{'INSTITUTION_TYPE' | translate}}
         </div>
         <dx-select-box stylingMode="outlined"
                        [dataSource]="educationTypes"
-                       displayExpr="name"
+                       displayExpr="{{ selectedLang === 'RU'? 'name' : 'en'}}"
                        valueExpr="id"
                        formControlName="educationalType"
-                       label="Выберите тип учебного заведения..."
+                       placeholder=" "
+                       [label]="'SELECT_EDUCATIONAL_TYPE' | translate"
                        labelMode="floating"
                        class="right">
           <dx-validator>
             <dxi-validation-rule
               type="required"
-              message="Поле обязательно для заполнения">
+              [message]="'FIELD_REQUIRED' | translate">
             </dxi-validation-rule>
           </dx-validator>
         </dx-select-box>
@@ -145,7 +124,7 @@
     <div class="form-container">
       <div class="box">
         <div class="label">
-          Должность руководителя образовательного учреждения
+          {{'LEADER_POSITION' | translate}}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="educationalPosition"
@@ -153,19 +132,14 @@
           <dx-validator>
             <dxi-validation-rule
               type="required"
-              message="Поле обязательно для заполнения">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="pattern"
-              pattern="\w+"
-              message="Поле заполнено неверно. Строка не должна начинаться с пробела">
+              [message]="'FIELD_REQUIRED' | translate">
             </dxi-validation-rule>
           </dx-validator>
         </dx-text-box>
       </div>
       <div class="box">
         <div class="label-right">
-          ФИО куратора
+          {{ 'CURATOR_FULL_NAME' | translate }}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="teamLeadName"
@@ -173,13 +147,7 @@
           <dx-validator>
             <dxi-validation-rule
               type="required"
-              message="Поле обязательно для заполнения">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="pattern"
-              pattern="^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$"
-              message="Поле заполнено неверно. Должно быть минимум два слова, начинающиеся с заглавной буквы.
-              Строка не должна начинаться с пробела">
+              [message]="'FIELD_REQUIRED' | translate">
             </dxi-validation-rule>
           </dx-validator>
         </dx-text-box>
@@ -190,18 +158,27 @@
     <div class="form-container">
       <div class="box">
         <div class="label">
-          Телефон куратора
+          {{ 'CURATOR_PHONE' | translate }}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="teamLeadPhone"
-                     mask="+7 (X00) 000-0000"
-                     [maskRules]="rules"
-                     class="left"
-        ></dx-text-box>
+                     class="left">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              [message]="'FIELD_REQUIRED' | translate">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="pattern"
+              pattern="^\+\d{1,4}[-.\s]?\d{1,14}$"
+              [message]="'INVALID_PHONE' | translate">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
       </div>
       <div class="box">
         <div class="label-right">
-          Электронная почта куратора
+          {{ 'CURATOR_EMAIL' | translate }}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="teamLeadEmail"
@@ -209,11 +186,11 @@
           <dx-validator>
             <dxi-validation-rule
               type="required"
-              message="Поле обязательно для заполнения">
+              [message]="'FIELD_REQUIRED' | translate">
             </dxi-validation-rule>
             <dxi-validation-rule
               type="email"
-              message="Электронная почта введена неверно">
+              [message]="'INVALID_EMAIL' | translate">
             </dxi-validation-rule>
           </dx-validator>
         </dx-text-box>
@@ -223,7 +200,7 @@
     <div class="form-container">
       <div class="box-column">
         <div class="label">
-          Название команды
+          {{ 'TEAM_NAME' | translate }}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="teamName"
@@ -231,13 +208,7 @@
           <dx-validator>
             <dxi-validation-rule
               type="required"
-              message="Поле обязательно для заполнения">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="stringLength"
-              [min]="5"
-              [max]="20"
-              message="Поле заполнено неверно. Минимальная длина названия - 5 символов, максимальная - 20">
+              [message]="'FIELD_REQUIRED' | translate">
             </dxi-validation-rule>
           </dx-validator>
         </dx-text-box>
@@ -247,7 +218,7 @@
     <div class="form-container">
       <div class="box">
         <div class="label">
-          ФИО первого участника
+          {{ 'FIRST_PARTICIPANT_FULL_NAME' | translate }}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="participantFullName1"
@@ -255,20 +226,14 @@
           <dx-validator>
             <dxi-validation-rule
               type="required"
-              message="Поле обязательно для заполнения">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="pattern"
-              pattern="^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$"
-              message="Поле заполнено неверно. Должно быть минимум два слова, начинающиеся с заглавной буквы.
-              Строка не должна начинаться с пробела">
+              [message]="'FIELD_REQUIRED' | translate">
             </dxi-validation-rule>
           </dx-validator>
         </dx-text-box>
       </div>
       <div class="box">
         <div class="label-right">
-          ФИО второго участника
+          {{ 'SECOND_PARTICIPANT_FULL_NAME' | translate }}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="participantFullName2"
@@ -276,13 +241,7 @@
           <dx-validator>
             <dxi-validation-rule
               type="required"
-              message="Поле обязательно для заполнения">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="pattern"
-              pattern="^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$"
-              message="Поле заполнено неверно. Должно быть минимум два слова, начинающиеся с заглавной буквы.
-              Строка не должна начинаться с пробела">
+              [message]="'FIELD_REQUIRED' | translate">
             </dxi-validation-rule>
           </dx-validator>
         </dx-text-box>
@@ -292,32 +251,50 @@
     <div class="form-container">
       <div class="box">
         <div class="label">
-          Телефон первого участика
+          {{ 'FIRST_PARTICIPANT_PHONE' | translate }}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="participantPhone1"
-                     mask="+7 (X00) 000-0000"
-                     [maskRules]="rules"
-                     class="left"
-        ></dx-text-box>
+                     class="left">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              [message]="'FIELD_REQUIRED' | translate">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="pattern"
+              pattern="^\+\d{1,4}[-.\s]?\d{1,14}$"
+              [message]="'INVALID_PHONE' | translate">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
       </div>
       <div class="box">
         <div class="label-right">
-          Телефон второго участника
+          {{ 'SECOND_PARTICIPANT_PHONE' | translate }}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="participantPhone2"
-                     mask="+7 (X00) 000-0000"
-                     [maskRules]="rules"
-                     class="right"
-        ></dx-text-box>
+                     class="right">
+          <dx-validator>
+            <dxi-validation-rule
+              type="required"
+              [message]="'FIELD_REQUIRED' | translate">
+            </dxi-validation-rule>
+            <dxi-validation-rule
+              type="pattern"
+              pattern="^\+\d{1,4}[-.\s]?\d{1,14}$"
+              [message]="'INVALID_PHONE' | translate">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-text-box>
       </div>
     </div>
 
     <div class="form-container">
       <div class="box">
         <div class="label">
-          Почта первого участника
+          {{ 'FIRST_PARTICIPANT_EMAIL' | translate }}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="participantEmail1"
@@ -325,18 +302,18 @@
           <dx-validator>
             <dxi-validation-rule
               type="required"
-              message="Поле обязательно для заполнения">
+              [message]="'FIELD_REQUIRED' | translate">
             </dxi-validation-rule>
             <dxi-validation-rule
               type="email"
-              message="Электронная почта введена неверно">
+              [message]="'INVALID_EMAIL' | translate">
             </dxi-validation-rule>
           </dx-validator>
         </dx-text-box>
       </div>
       <div class="box">
         <div class="label-right">
-          Почта второго участника
+          {{ 'SECOND_PARTICIPANT_EMAIL' | translate }}
         </div>
         <dx-text-box stylingMode="outlined"
                      formControlName="participantEmail2"
@@ -344,22 +321,24 @@
           <dx-validator>
             <dxi-validation-rule
               type="required"
-              message="Поле обязательно для заполнения">
+              [message]="'FIELD_REQUIRED' | translate">
             </dxi-validation-rule>
             <dxi-validation-rule
               type="email"
-              message="Электронная почта введена неверно">
+              [message]="'INVALID_EMAIL' | translate">
             </dxi-validation-rule>
           </dx-validator>
         </dx-text-box>
       </div>
     </div>
-    <dx-button
-               (click)="registration()"
-               text="Зарегистрироваться"
+    <dx-button (click)="registration()"
+               [text]="'REGISTER' | translate"
                stylingMode="contained"
                type="default"
                class="button"
     ></dx-button>
+    <div class="warning">
+      {{ 'AGREE_TO_PRIVACY_POLICY' | translate }}
+    </div>
   </div>
 </div>

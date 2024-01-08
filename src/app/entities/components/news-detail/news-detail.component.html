@@ -2,37 +2,31 @@
   <div class="route">
   <span [routerLink]="mainPage"
         class="main">
-    {{ mainPage === '/news' ? 'Новости' : 'Главная' }}
+    {{ (mainPage === '/news' ? 'NEWS' : 'HOME') | translate }}
   </span>
     <span class="separator">
     >
   </span>
     <span class="name">
-    Регистрация
+    {{'NEWS' | translate}}
   </span>
   </div>
   <div class="title">
-    Регистрация
+    {{'NEWS' | translate}}
   </div>
-  <img src="./assets/icons/b4ee94aa20bd9af0dafd3b4d62332c08.jpeg"
+  <img [src]="newsDetail?.imageUrl ?? './assets/icons/logo.svg'"
        class="image">
-  <div class="button">
-    Регистрация
+  <div class="buttons">
+    <div *ngFor="let button of newsDetail?.fileUrls">
+      <a [href]="button?.url"
+         target="_blank">
+        <div class="button">
+          {{ button?.title }}
+        </div>
+      </a>
+    </div>
   </div>
   <div class="description">
-    Lorem ipsum dolor sit amet consectetur. Elit enim tristique dolor ullamcorper
-    ut cras netus. Pellentesque purus fusce arcu lacus aenean elementum mattis.
-    Praesent dui egestas sed ornare pharetra proin tortor sed. Leo dignissim id vel aliquam.
-    Lorem ipsum dolor sit amet consectetur. Elit enim tristique dolor ullamcorper
-    ut cras netus. Pellentesque purus fusce arcu lacus aenean elementum mattis.
-    <br>
-    Praesent dui egestas sed ornare pharetra proin tortor sed. Leo dignissim id vel aliquam.
-    Lorem ipsum dolor sit amet consectetur. Elit enim tristique dolor ullamcorper
-    ut cras netus. Pellentesque purus fusce arcu lacus aenean elementum mattis.
-    Praesent dui egestas sed ornare pharetra proin tortor sed. Leo dignissim id vel aliquam.
-    Lorem ipsum dolor sit amet consectetur. Elit enim tristique dolor ullamcorper
-    ut cras netus. Pellentesque purus fusce arcu lacus aenean elementum mattis.
-    <br>
-    Praesent dui egestas sed ornare pharetra proin tortor sed. Leo dignissim id vel aliquam.
+    {{ newsDetail?.text }}
   </div>
 </div>

@@ -1,14 +1,29 @@
 <div class="news-page">
   <div class="title">
-    Новости
+    {{'NEWS' | translate}}
   </div>
   <div class="info">
     <div class="description">
-      Актуальные новости за последние 2 недели
+      {{'LATEST_NEWS' | translate}}
     </div>
-    <div class="pagination">
-    </div>
+    <app-pagination *ngIf="totalPages > 1"
+                    [current]="current"
+                    [total]="totalPages"
+                    [nav]="true"
+                    (next)="next($event)"
+                    (previous)="previous($event)"
+                    (goTo)="goTo($event)">
+    </app-pagination>
   </div>
-  <app-news [page]="'news'">
+  <app-news [newsPreview]="getNewsForPage(current)"
+            [page]="'main'">
   </app-news>
+  <app-pagination *ngIf="totalPages > 1"
+                  [current]="current"
+                  [total]="totalPages"
+                  [nav]="true"
+                  (next)="next($event)"
+                  (previous)="previous($event)"
+                  (goTo)="goTo($event)">
+  </app-pagination>
 </div>

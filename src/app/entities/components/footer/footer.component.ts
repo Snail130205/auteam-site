@@ -3,6 +3,7 @@ import {IMenuButton} from "../../interfaces/menu-button.interface";
 import {MainLib} from "../../libs/main.lib";
 import {NgForOf} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +11,8 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
   imports: [
     NgForOf,
     RouterLinkActive,
-    RouterLink
+    RouterLink,
+    TranslateModule
   ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'

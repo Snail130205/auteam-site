@@ -1,9 +1,13 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {DxButtonModule, DxSelectBoxModule, DxTextBoxModule, DxValidatorModule} from "devextreme-angular";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MainLib} from "../../libs/main.lib";
 import {HttpClient} from "@angular/common/http";
 import {MainService} from "../../services/main.service";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {IEducation} from "../../interfaces/education.interface";
+import moment from "moment";
+import {interval, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-olympiad',
@@ -13,44 +17,70 @@ import {MainService} from "../../services/main.service";
     DxSelectBoxModule,
     ReactiveFormsModule,
     DxButtonModule,
-    DxValidatorModule
+    DxValidatorModule,
+    TranslateModule
   ],
   templateUrl: './olympiad.component.html',
   styleUrl: './olympiad.component.scss'
 })
-export class OlympiadComponent implements OnInit {
+export class OlympiadComponent extends MainLib implements OnInit, OnDestroy{
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _mainService: MainService = inject(MainService);
 
+  public selectedLang: string = 'RU';
   public rules: any = { X: /[02-9]/ };
-  public educationTypes: any[] = MainLib.educationTypes;
+  public educationTypes: IEducation[] = MainLib.educationTypes;
+  public date: moment.Moment = moment(new Date());
+  public timerText: string = '';
+  public teamCount: number = 0;
+  // @ts-ignore
+  private timerSubscription: Subscription;
+
   public form: FormGroup = this._fb.group({
-    teamLeadName: [null, [Validators.required, Validators.pattern('^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$')]],
-    teamLeadPhone: null,
+    teamLeadName: [null, [Validators.required]],
+    teamLeadPhone: ['+', [
+      Validators.required,
+      Validators.pattern('^\\+\\d{1,4}[-.\\s]?\\d{1,14}$')]],
     teamLeadEmail: [null, [Validators.required, Validators.email]],
-    educationalFullName: [null,  [Validators.required, Validators.pattern('^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$')]],
-    educationalPosition:  [null, [Validators.required, Validators.pattern('\w+')]],
-    education: [null, [Validators.required, Validators.min(5)]],
+    educationalFullName: [null,  [Validators.required]],
+    educationalPosition:  [null, [Validators.required]],
+    education: [null, [Validators.required]],
     educationalType: [null, [Validators.required]],
-    teamName: [null, [Validators.required, Validators.min(5), Validators.max(20)]],
-    participantFullName1: [null, [Validators.required, Validators.pattern('^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$')]],
-    participantFullName2: [null, [Validators.required, Validators.pattern('^[А-Яа-яЁё]+\s[А-Яа-яЁё]+(\s[А-Яа-яЁё]+)?$')]],
+    teamName: [null, [Validators.required, Validators.max(20)]],
+    participantFullName1: [null, [Validators.required]],
+    participantFullName2: [null, [Validators.required]],
     participantEmail1: [null, [Validators.required, Validators.email]],
     participantEmail2: [null, [Validators.required, Validators.email]],
-    participantPhone1: [null, [Validators.required]],
-    participantPhone2: [null, [Validators.required]],
+    participantPhone1: ['+', [
+      Validators.required,
+      Validators.pattern('^\\+\\d{1,4}[-.\\s]?\\d{1,14}$')]],
+    participantPhone2: ['+', [
+      Validators.required,
+      Validators.pattern('^\\+\\d{1,4}[-.\\s]?\\d{1,14}$')]],
   });
 
+  constructor(private translateService: TranslateService) {
+    super(translateService);
+  }
+
   public ngOnInit(): void {
+    this._mainService.getOlympiadInfo().then();
+    this._mainService.olympiadInfo$.subscribe((olympiadInfo) => {
+      if (olympiadInfo) {
+        this.date = moment(olympiadInfo.olympiadStartDate.date);
+        this.teamCount = olympiadInfo.teamCount;
+      }
+    });
+    this.translateService.onLangChange.subscribe((res) => {
+      this.selectedLang = res.lang;
+    });
+
+    this.timerSubscription = interval(1000).subscribe(() => {
+      this.updateTimer();
+    });
   }
 
   public registration(): void {
-    const teamLeadPhone: string = '+7' + this.form.get('teamLeadPhone');
-    const participantPhone1: string = '+7' + this.form.get('participantPhone1');
-    const participantPhone2: string = '+7' + this.form.get('participantPhone1');
-    this.form.get('participantPhone1')?.patchValue(participantPhone1);
-    this.form.get('participantPhone2')?.patchValue(participantPhone2);
-    this.form.get('teamLeadPhone')?.patchValue(teamLeadPhone);
     const body: Record<string, any> = {
       olympiadId: 1,
       registrationForm: this.form.value
@@ -61,5 +91,31 @@ export class OlympiadComponent implements OnInit {
           this.form.reset();
         }
       });
+  }
+
+  getTimeRemaining(): string {
+    const now = moment();
+    const duration = moment.duration(this.date.diff(now));
+
+    const days = duration.days();
+    const hours = duration.hours();
+    const minutes = duration.minutes();
+    const seconds = duration.seconds();
+
+    return this.translateService.instant('TIMER.REMAINING', {
+      days: days,
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Отписываемся от таймера при уничтожении компонента
+    this.timerSubscription.unsubscribe();
+  }
+
+  private updateTimer(): void {
+    this.timerText = this.getTimeRemaining();
   }
 }

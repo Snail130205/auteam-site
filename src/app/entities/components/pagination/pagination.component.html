@@ -1,0 +1,38 @@
+<nav aria-label="Pagination">
+  <ul>
+    <li>
+      <button *ngIf="nav"
+              [disabled]="current === 1"
+              (click)="changePage(false)"
+              class="buttons">
+        <img src="./assets/icons/Shape-left.svg"
+             class="image">
+      </button>
+    </li>
+    <li *ngFor="let page of pages; index as i">
+      <a *ngIf="page !== -1; else more"
+         [attr.aria-current]="page === current ? 'page' : null"
+         [attr.aria-label]="page === current ? 'Current Page, Page ' + page : 'Go to Page ' + page"
+         [class.current]="page === current"
+         (click)="onGoTo(page)"
+         (keyup.enter)="onGoTo(page)"
+         class="internal"
+         tabindex="0">
+        {{ page }}
+      </a>
+      <ng-template #more>
+        <a class="more"> ... </a>
+      </ng-template>
+    </li>
+    <li>
+      <button *ngIf="nav"
+              [disabled]="current === total"
+              (click)="changePage(true)"
+              class="buttons">
+        <img src="./assets/icons/Shape-right.svg"
+             class="image">
+      </button>
+    </li>
+  </ul>
+</nav>
+

@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
-  public url: string = 'http://192.168.3.2:8000/api/';
+  public url: string = 'http://au-team.ru/api/';
 
   private _loader$$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public loader$: Observable<boolean> = this._loader$$.asObservable();
@@ -15,7 +16,21 @@ export class MainService {
   private _message$$: BehaviorSubject<string> = new BehaviorSubject<string>('');
   public message$: Observable<string> = this._message$$.asObservable();
 
-  constructor(private _httpClient: HttpClient) { }
+  private _news$$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  public news$: Observable<any[]> = this._news$$.asObservable();
+
+  private _newsDetail$$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  public newsDetail$: Observable<any> = this._newsDetail$$.asObservable();
+
+  private _olympiadInfo$$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  public olympiadInfo$: Observable<any> = this._olympiadInfo$$.asObservable();
+
+  private _selectedLanguage$$: BehaviorSubject<string> = new BehaviorSubject<string>('RU');
+  public selectedLanguage$: Observable<string> = this._selectedLanguage$$.asObservable();
+
+  constructor(private _httpClient: HttpClient,
+              private _translate: TranslateService
+  ) { }
 
   public set loader(loader: boolean) {
     this._loader$$.next(loader);
@@ -33,6 +48,17 @@ export class MainService {
     return this._message$$.getValue();
   }
 
+  public set newsDetail(newsDetail: any) {
+    this._newsDetail$$.next(newsDetail);
+  }
+
+  public get newsDetail(): any {
+    return this._newsDetail$$.getValue();
+  }
+
+public selectedLanguage(selectedLanguage: string): void {
+    this._translate.use(selectedLanguage);
+}
 
   public async sendForm(body: any): Promise<any> {
     this.loader = true;
@@ -43,6 +69,32 @@ export class MainService {
       return data;
     } catch (error: any ) {
       this.message = error.error.message;
+      this.loader = false;
+      throw error;
+    }
+  }
+
+  public async getNews(): Promise<any> {
+    this.loader = true;
+    try {
+      const data: any = await this._httpClient.get(this.url + 'news/getNews').toPromise();
+      this.loader = false;
+      return this._news$$.next(data);
+    } catch (error: any ) {
+      this.message = 'Не удалось загрузить новости!';
+      this.loader = false;
+      throw error;
+    }
+  }
+
+  public async getOlympiadInfo(): Promise<any> {
+    this.loader = true;
+    try {
+      const data: any = await this._httpClient.get(this.url + 'olympiad/1').toPromise();
+      this.loader = false;
+      return this._olympiadInfo$$.next(data);
+    } catch (error: any ) {
+      this.message = 'Не удалось получить информацию о преведении олимпиады!';
       this.loader = false;
       throw error;
     }

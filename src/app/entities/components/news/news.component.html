@@ -2,18 +2,16 @@
   <div *ngFor="let news of newsPreview">
     <div class="container">
       <div class="info">
-        <div class="title">
-          {{ news.title }}
-        </div>
         <div class="description">
-          {{ news.description }}
+          {{ news.shortText ? news.shortText + '...' : ''}}
         </div>
         <div [routerLink]="[ page === 'news' ? '/news' : '/main', news.id]"
-             class="button">
-          Подробнее
+             class="button"
+             (click)="routesPage(news)">
+          {{'LEARN_MORE' | translate}}
         </div>
       </div>
-      <img [src]="news.image"
+      <img [src]="news.imageUrl ?? './assets/icons/logo.svg'"
            class="image">
     </div>
     <div class="line">

@@ -1,0 +1,82 @@
+{
+  "HOME": "Home",
+  "NEWS": "News",
+  "OLYMPIAD": "FoNT Olympiad",
+  "ABOUT_US": "About Us",
+  "SCHOOL": "School",
+  "UNIVERSITY": "University",
+  "COLLEGE": "College",
+  "MAIN_TEXT_1": "We strive to convey and showcase",
+  "MAIN_TEXT_2": "modern IT technologies, ",
+  "MAIN_TEXT_3": "aiming to engage as many future specialists and professionals as possible ",
+  "MAIN_TEXT_4": "in the exciting world of IT",
+  "INFORMATION_TAB": {
+    "LINUX_SYSTEM": {
+      "TITLE": "Linux System",
+      "TEXT": "Open-source operating system"
+    },
+    "NETWORKING": {
+      "TITLE": "Networking",
+      "TEXT": "Building networks and connecting devices"
+    },
+    "SERVICES": {
+      "TITLE": "Services",
+      "TEXT": "Working with functional services and resources"
+    },
+    "INFRASTRUCTURE_DESIGN": {
+      "TITLE": "Infrastructure Design",
+      "TEXT": "Designing IT system infrastructure"
+    },
+    "EDUCATION": {
+      "TITLE": "Education",
+      "TEXT": "Training and development of professional skills"
+    },
+    "INTEGRATION": {
+      "TITLE": "Integration",
+      "TEXT": "Integration of various systems and platforms"
+    }
+  },
+  "LATEST_NEWS": "Latest news from the past 2 weeks",
+  "PROFILE": "Our Profile",
+  "ERROR": "Error",
+  "ERROR_MESSAGE": "Oops, something went wrong",
+  "GO_HOME": "Go to Home",
+  "OLYMPIAD_NAME": "Averin V.G. Basics of Networking Olympiad",
+  "OLYMPIAD_DESCRIPTION": "An annual competition that tests the knowledge and skills of participants in the field of networking technologies. The Olympiad is organized by the AU_TEAM and is open to students from various educational institutions.",
+  "ABOUT_OLYMPIAD": "About the Olympiad",
+  "GOAL_OLYMPIAD": "Goal of the Olympiad",
+  "GOAL_OLYMPIAD_TEXT": "The objectives of the Olympiad include developing students' creative abilities, enhancing their educational level in the field of modern information technologies, and identifying young professionals in this area.",
+  "PARTICIPANTS": "Participants",
+  "PARTICIPANTS_TEXT": "The Olympiad is open to students of all specialties, years, and forms of education from vocational and higher education institutions in Russia, as well as similar organizations from other countries. Participation is team-based, with each team comprising two individuals.",
+  "LEARN_MORE": "Learn More",
+  "REGISTERED": "Teams are registered",
+  "TIMER": {
+    "REMAINING": "{{days}} days {{hours}} hours {{minutes}} minutes {{seconds}} seconds"
+  },
+  "COUNTDOWN_SECTION": {
+    "BEFORE_START": "Before the start",
+    "STAGE": "stage",
+    "REMAINING": "remaining"
+  },
+  "LEADER_FULL_NAME": "Full Name of the Educational Institution Leader",
+  "INSTITUTION_TYPE": "Type of Educational Institution",
+  "LEADER_POSITION": "Position of the Educational Institution Leader",
+  "CURATOR_FULL_NAME": "Curator's Full Name",
+  "CURATOR_PHONE": "Curator's Phone",
+  "CURATOR_EMAIL": "Curator's Email",
+  "TEAM_NAME": "Team Name",
+  "FIRST_PARTICIPANT_FULL_NAME": "Full Name of the First Participant",
+  "SECOND_PARTICIPANT_FULL_NAME": "Full Name of the Second Participant",
+  "FIRST_PARTICIPANT_PHONE": "Phone of the First Participant",
+  "SECOND_PARTICIPANT_PHONE": "Phone of the Second Participant",
+  "FIRST_PARTICIPANT_EMAIL": "Email of the First Participant",
+  "SECOND_PARTICIPANT_EMAIL": "Email of the Second Participant",
+  "AGREE_TO_PRIVACY_POLICY": "By clicking the button, you agree to the privacy policy",
+  "INSTITUTION_FULL_NAME": "Full Name of Educational Institution",
+  "APPLY_FOR_PARTICIPATION": "Apply for Participation",
+  "REGISTER": "Register",
+  "FIELD_REQUIRED": "This field is required",
+  "INVALID_EMAIL": "Invalid email address",
+  "SELECT_EDUCATIONAL_TYPE": "Select the type of educational institution...",
+  "INVALID_PHONE": "Invalid phone number format. The number must start with the '+' symbol."
+}
