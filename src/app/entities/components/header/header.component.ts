@@ -15,7 +15,7 @@ import {TranslateModule, TranslateService} from "@ngx-translate/core";
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent extends MainLib{
+export class HeaderComponent {
   private readonly _mainService: MainService = inject(MainService);
   public buttons: IMenuButton[] = MainLib.menuButtons;
   public selectedLanguage: string = 'RU';
@@ -23,9 +23,5 @@ export class HeaderComponent extends MainLib{
 
   public changeLanguage(): void {
     this._mainService.selectedLanguage(this.selectedLanguage);
-  }
-
-  constructor(private translateService: TranslateService) {
-    super(translateService);
   }
 }

@@ -58,6 +58,24 @@
         </div>
       </div>
     </div>
+    <div class="partners">
+      <div class="text">
+        <div class="title">
+          {{'PARTNERS' | translate}}
+        </div>
+        <div class="description">
+          <div *ngFor="let partner of partners"
+          class="partner">
+            <a [href]="partner.link"
+               target="_blank"
+               class="link">
+              <img [src]="partner.img"
+                   class="image">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="form"

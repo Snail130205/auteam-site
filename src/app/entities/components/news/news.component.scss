@@ -11,6 +11,7 @@
     justify-content: space-between;
     align-items: flex-start;
     padding-bottom: 30px;
+    max-width: 100%;
 
     .title {
       font-weight: 700;
@@ -37,13 +38,14 @@
       line-height: 24px;
       padding-bottom: 16px;
       margin-right: 8px;
+      word-wrap: break-word;
 
-      @media screen and (max-width: 650px) and (min-width: 490px){
+      @media screen and (max-width: 650px) and (min-width: 511px){
         font-size: 12px;
         line-height: 18px;
       }
 
-      @media screen and (max-width: 489px){
+      @media screen and (max-width: 510px){
         font-size: 8px;
         line-height: 12px;
         padding-bottom: 8px;
@@ -58,11 +60,11 @@
       border: 1px solid rgba(26, 26, 26, 0.1);
 
       @media screen and (max-width: 650px) and (min-width: 490px){
-        min-width: 230px;
+        max-width: 200px;
       }
 
       @media screen and (max-width: 489px){
-        min-width: 170px;
+        max-width: 150px;
       }
     }
 

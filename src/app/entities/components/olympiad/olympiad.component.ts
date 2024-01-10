@@ -8,6 +8,7 @@ import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {IEducation} from "../../interfaces/education.interface";
 import moment from "moment";
 import {interval, Subscription} from "rxjs";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-olympiad',
@@ -18,12 +19,13 @@ import {interval, Subscription} from "rxjs";
     ReactiveFormsModule,
     DxButtonModule,
     DxValidatorModule,
-    TranslateModule
+    TranslateModule,
+    NgForOf
   ],
   templateUrl: './olympiad.component.html',
   styleUrl: './olympiad.component.scss'
 })
-export class OlympiadComponent extends MainLib implements OnInit, OnDestroy{
+export class OlympiadComponent implements OnInit, OnDestroy{
   private readonly _fb: FormBuilder = inject(FormBuilder);
   private readonly _mainService: MainService = inject(MainService);
 
@@ -33,6 +35,7 @@ export class OlympiadComponent extends MainLib implements OnInit, OnDestroy{
   public date: moment.Moment = moment(new Date());
   public timerText: string = '';
   public teamCount: number = 0;
+  public partners: any[] = MainLib.partners;
   // @ts-ignore
   private timerSubscription: Subscription;
 
@@ -60,11 +63,9 @@ export class OlympiadComponent extends MainLib implements OnInit, OnDestroy{
   });
 
   constructor(private translateService: TranslateService) {
-    super(translateService);
   }
 
   public ngOnInit(): void {
-    this._mainService.getOlympiadInfo().then();
     this._mainService.olympiadInfo$.subscribe((olympiadInfo) => {
       if (olympiadInfo) {
         this.date = moment(olympiadInfo.olympiadStartDate.date);

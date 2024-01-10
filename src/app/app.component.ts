@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     this._mainService.getNews().then();
+    this._mainService.getOlympiadInfo().then();
 
     this._mainService.loader$
       .subscribe((loader: boolean) => this.isLoading = loader);

@@ -197,6 +197,7 @@
       }
     }
 
+    .partners,
     .box {
       width: 100%;
       padding: 32px;
@@ -377,6 +378,32 @@
         font-size: 9px;
         line-height: 15px;
       }
+    }
+  }
+
+  .partner {
+    width: 30%;
+  }
+
+  .partners {
+
+    .text {
+      margin: 0 !important;
+    }
+
+    .title {
+      text-align: center;
+    }
+
+    .image {
+      border-radius: 10px;
+    }
+
+    .description {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      flex-direction: row;
     }
   }
 }
