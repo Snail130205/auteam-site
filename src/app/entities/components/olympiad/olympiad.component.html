@@ -36,7 +36,7 @@
     </div>
     <div class="box">
       <img src="./assets/icons/goal.svg"
-      class="img">
+           class="img">
       <div class="text">
         <div class="title">
           {{'GOAL_OLYMPIAD' | translate}}
@@ -65,7 +65,7 @@
         </div>
         <div class="description">
           <div *ngFor="let partner of partners"
-          class="partner">
+               class="partner">
             <a [href]="partner.link"
                target="_blank"
                class="link">
@@ -334,6 +334,7 @@
           {{ 'SECOND_PARTICIPANT_EMAIL' | translate }}
         </div>
         <dx-text-box stylingMode="outlined"
+                     ValueChangeEvent="keyup"
                      formControlName="participantEmail2"
                      class="right">
           <dx-validator>
@@ -349,14 +350,19 @@
         </dx-text-box>
       </div>
     </div>
-    <dx-button (click)="registration()"
+    <dx-button [(disabled)]="disabledForm"
+               (click)="registration()"
                [text]="'REGISTER' | translate"
                stylingMode="contained"
                type="default"
                class="button"
     ></dx-button>
     <div class="warning">
-      {{ 'AGREE_TO_PRIVACY_POLICY' | translate }}
+      {{ 'AGREE_TO_PRIVACY_POLICY_1' | translate }}
+      <span (click)="openFile('Политика в отношении обработки персональных данных.pdf')"
+            class="politic">
+        {{ 'AGREE_TO_PRIVACY_POLICY_2' | translate }}
+      </span>
     </div>
   </div>
 </div>

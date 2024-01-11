@@ -369,6 +369,11 @@
       color: rgba(26, 26, 26, 0.7);
       margin-top: 8px;
 
+      .politic {
+        cursor: pointer;
+        color: #2463EB;
+      }
+
       @media screen and (max-width: 750px) and (min-width: 490px) {
         font-size: 14px;
         line-height: 20px;

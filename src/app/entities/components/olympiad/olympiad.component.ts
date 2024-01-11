@@ -35,6 +35,7 @@ export class OlympiadComponent implements OnInit, OnDestroy{
   public date: moment.Moment = moment(new Date());
   public timerText: string = '';
   public teamCount: number = 0;
+  public disabledForm: boolean = true;
   public partners: any[] = MainLib.partners;
   // @ts-ignore
   private timerSubscription: Subscription;
@@ -66,6 +67,7 @@ export class OlympiadComponent implements OnInit, OnDestroy{
   }
 
   public ngOnInit(): void {
+    this._changedForm();
     this._mainService.olympiadInfo$.subscribe((olympiadInfo) => {
       if (olympiadInfo) {
         this.date = moment(olympiadInfo.olympiadStartDate.date);
@@ -81,6 +83,11 @@ export class OlympiadComponent implements OnInit, OnDestroy{
     });
   }
 
+  public openFile(fileName: string): void {
+    const fileUrl: string = './assets/files/' + fileName;
+    window.open(fileUrl, '_blank');
+  }
+
   public registration(): void {
     const body: Record<string, any> = {
       olympiadId: 1,
@@ -94,7 +101,7 @@ export class OlympiadComponent implements OnInit, OnDestroy{
       });
   }
 
-  getTimeRemaining(): string {
+  public getTimeRemaining(): string {
     const now = moment();
     const duration = moment.duration(this.date.diff(now));
 
@@ -118,5 +125,13 @@ export class OlympiadComponent implements OnInit, OnDestroy{
 
   private updateTimer(): void {
     this.timerText = this.getTimeRemaining();
+  }
+
+  private _changedForm(): void {
+    this.form.valueChanges
+      .subscribe(() => {
+        this.disabledForm = this.form.invalid;
+        console.log(this.form.value)
+      });
   }
 }
