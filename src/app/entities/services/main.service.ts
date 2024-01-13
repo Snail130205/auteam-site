@@ -8,7 +8,7 @@ import {TranslateService} from "@ngx-translate/core";
   providedIn: 'root'
 })
 export class MainService {
-  public url: string = 'http://au-team.ru/api/';
+  public url: string = 'https://au-team.ru/api/';
 
   private _loader$$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public loader$: Observable<boolean> = this._loader$$.asObservable();

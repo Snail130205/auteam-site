@@ -82,42 +82,42 @@ export abstract class MainLib {
     {
       img: './assets/logos/astra.jpg',
       link: 'https://astralinux.ru'
-    },
-    {
-      img: './assets/logos/avrora.jpg',
-      link: 'https://auroraos.ru/'
-    },
-    {
-      img: './assets/logos/eltex.jpg',
-      link: 'https://eltex-co.ru'
-    },
-    {
-      img: './assets/logos/neytrino.jpg',
-      link: 'https://kpda.ru/products/kpda10964/'
-    },
-    {
-      img: './assets/logos/postgres.jpg',
-      link: 'https://postgrespro.ru'
-    },
-    {
-      img: './assets/logos/pt.jpg',
-      link: 'https://ptsecurity.com'
-    },
-    {
-      img: './assets/logos/red.jpg',
-      link: 'https://redos.red-soft.ru'
-    },
-    {
-      img: './assets/logos/rosa.jpg',
-      link: 'https://rosalinux.ru'
-    },
-    {
-      img: './assets/logos/secopin.jpg',
-      link: 'https://secopin.com'
-    },
-    {
-      img: './assets/logos/tayle.jpg',
-      link: 'https://www.tayle.ru/'
     }
+    // {
+    //   img: './assets/logos/avrora.jpg',
+    //   link: 'https://auroraos.ru/'
+    // },
+    // {
+    //   img: './assets/logos/eltex.jpg',
+    //   link: 'https://eltex-co.ru'
+    // },
+    // {
+    //   img: './assets/logos/neytrino.jpg',
+    //   link: 'https://kpda.ru/products/kpda10964/'
+    // },
+    // {
+    //   img: './assets/logos/postgres.jpg',
+    //   link: 'https://postgrespro.ru'
+    // },
+    // {
+    //   img: './assets/logos/pt.jpg',
+    //   link: 'https://ptsecurity.com'
+    // },
+    // {
+    //   img: './assets/logos/red.jpg',
+    //   link: 'https://redos.red-soft.ru'
+    // },
+    // {
+    //   img: './assets/logos/rosa.jpg',
+    //   link: 'https://rosalinux.ru'
+    // },
+    // {
+    //   img: './assets/logos/secopin.jpg',
+    //   link: 'https://secopin.com'
+    // },
+    // {
+    //   img: './assets/logos/tayle.jpg',
+    //   link: 'https://www.tayle.ru/'
+    // }
   ];
 }
