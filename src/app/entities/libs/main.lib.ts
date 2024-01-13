@@ -59,18 +59,18 @@ export abstract class MainLib {
   public static readonly educationTypes: IEducation[] = [
     {
       id: 1,
-      name: 'Школа',
-      en: 'School'
+      name: 'Среднее',
+      en: 'Secondary education'
     },
     {
       id: 3,
-      name: 'Университет',
-      en: 'University'
+      name: 'Высшее',
+      en: 'Higher education'
     },
     {
       id: 2,
-      name: 'Колледж',
-      en: 'Collage'
+      name: 'Среднее специальное',
+      en: 'Specialized secondary'
     },
   ];
 
@@ -79,10 +79,10 @@ export abstract class MainLib {
       img: './assets/logos/alt.jpg',
       link: 'https://basealt.ru'
     },
-    {
-      img: './assets/logos/astra.jpg',
-      link: 'https://astralinux.ru'
-    }
+    // {
+    //   img: './assets/logos/astra.jpg',
+    //   link: 'https://astralinux.ru'
+    // },
     // {
     //   img: './assets/logos/avrora.jpg',
     //   link: 'https://auroraos.ru/'
@@ -111,10 +111,10 @@ export abstract class MainLib {
     //   img: './assets/logos/rosa.jpg',
     //   link: 'https://rosalinux.ru'
     // },
-    // {
-    //   img: './assets/logos/secopin.jpg',
-    //   link: 'https://secopin.com'
-    // },
+    {
+      img: './assets/logos/secopin.jpg',
+      link: 'https://secopin.com'
+    }
     // {
     //   img: './assets/logos/tayle.jpg',
     //   link: 'https://www.tayle.ru/'
