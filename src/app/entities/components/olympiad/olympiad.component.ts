@@ -1,4 +1,4 @@
-import {Component, inject, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import {AfterViewInit, Component, inject, OnDestroy, OnInit, Renderer2} from '@angular/core';
 import {DxButtonModule, DxSelectBoxModule, DxTextBoxModule, DxValidatorModule} from "devextreme-angular";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MainLib} from "../../libs/main.lib";
@@ -6,9 +6,16 @@ import {HttpClient} from "@angular/common/http";
 import {MainService} from "../../services/main.service";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {IEducation} from "../../interfaces/education.interface";
-import moment from "moment";
+import moment, {duration, now} from "moment";
 import {interval, Subscription} from "rxjs";
 import {NgForOf, NgIf} from "@angular/common";
+
+declare global {
+  interface Window {
+    yandex_captcha: () => void;
+  }
+}
+
 
 @Component({
     selector: 'app-olympiad',
@@ -74,6 +81,8 @@ export class OlympiadComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit(): void {
+      window.yandex_captcha = this.yandexCaptcha.bind(this);
+      this.initYandexCaptcha();
         this._loadCaptchaScript();
         this._changedForm();
         this._mainService.olympiadInfo$.subscribe((olympiadInfo) => {
@@ -96,6 +105,30 @@ export class OlympiadComponent implements OnInit, OnDestroy {
         const fileUrl: string = './assets/files/' + fileName;
         window.open(fileUrl, '_blank');
     }
+
+  public initYandexCaptcha(): void {
+    const script = document.createElement('script');
+    script.innerHTML = `
+      document.addEventListener('DOMContentLoaded', function() {
+        new window.Ya.Captcha({
+          element: document.querySelector('.smart-captcha'),
+          callbacks: {
+            load: function() {},
+            render: function() {},
+            submit: function() {},
+            abort: function() {}
+          }
+        });
+      });
+    `;
+    document.body.appendChild(script);
+  }
+
+  public yandexCaptcha(): void {
+    // @ts-ignore
+    const smartToken: string = document.querySelector('input[name="smart-token"]').value;
+    this.token = smartToken;
+  }
 
     public registration(): void {
         this._mainService.registration(this.token)
@@ -146,7 +179,7 @@ export class OlympiadComponent implements OnInit, OnDestroy {
     private _changedForm(): void {
         this.form.valueChanges
             .subscribe(() => {
-                this.disabledForm = this.form.invalid || this.token === '';
+                this.disabledForm = (this.form.invalid || !this.token);
             });
     }
 
@@ -156,4 +189,10 @@ export class OlympiadComponent implements OnInit, OnDestroy {
         script.defer = true;
         this._renderer.appendChild(document.head, script);
     }
+
+  public yandex_captcha(): void {
+    // @ts-ignore
+    let smart_token: string = document.querySelector("input[name='smart-token']").value as string;
+    console.log(smart_token);
+  }
 }
