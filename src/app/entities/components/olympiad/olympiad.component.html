@@ -358,7 +358,7 @@
       style="{height: 100px; width: 99%; margin: 8px 0}">
       <input type="hidden" name="smart-token" [value]="token">
     </div>
-    <dx-button [(disabled)]="(NowDate > dateOlympiad) || disabledForm || !(!!token)"
+    <dx-button [(disabled)]="(NowDate > dateOlympiad) || disabledForm"
                (click)="registration()"
                [text]="(NowDate < dateOlympiad ? 'REGISTER' : 'REGISTRATION_IS_COMPLETED')| translate"
                stylingMode="contained"
