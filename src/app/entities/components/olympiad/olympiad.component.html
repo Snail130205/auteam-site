@@ -356,7 +356,7 @@
       class="smart-captcha"
       data-sitekey="ysc1_PaSw5WvSh4SU1AaM5CcHW6xZZPci33eE70fEtsv52144b842"
       style="{height: 100px; width: 99%; margin: 8px 0}">
-      <input type="hidden" name="smart-token" [(ngModel)]="token">
+      <input type="hidden" name="smart-token" [value]="token">
     </div>
     <dx-button [(disabled)]="(NowDate > dateOlympiad) || disabledForm || !token"
                (click)="registration()"

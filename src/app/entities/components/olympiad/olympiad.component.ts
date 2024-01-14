@@ -98,25 +98,21 @@ export class OlympiadComponent implements OnInit, OnDestroy {
     }
 
     public registration(): void {
-        const secretKey: string = 'ysc2_PaSw5WvSh4SU1AaM5CcHw5hYs7yHBryckhmohgxL3515b98b';
-        const apiUrl: string = `https://smartcaptcha.yandexcloud.net/validate?secret=${secretKey}&token=${this.token}`;
-
-        this._http.get(apiUrl).subscribe((response: any) => {
-            if (response.success) {
-                const body: Record<string, any> = {
-                    olympiadId: 1,
-                    registrationForm: this.form.value
-                };
-                this._mainService.sendForm(body)
-                    .then((data) => {
-                        if (data) {
-                            this.form.reset();
-                        }
-                    });
-            } else {
-               this._mainService.message = 'Не удалось пройти проверку! Попробуйте еще раз'
-            }
-        });
+        this._mainService.registration(this.token)
+            .then((data) => {
+                if (data.success) {
+                    const body: Record<string, any> = {
+                        olympiadId: 1,
+                        registrationForm: this.form.value
+                    };
+                    this._mainService.sendForm(body)
+                        .then((data) => {
+                            if (data) {
+                                this.form.reset();
+                            }
+                        });
+                }
+            })
     }
 
     public getTimeRemaining(): string {

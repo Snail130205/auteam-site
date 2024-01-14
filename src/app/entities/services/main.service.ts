@@ -28,6 +28,7 @@ export class MainService {
   private _selectedLanguage$$: BehaviorSubject<string> = new BehaviorSubject<string>('RU');
   public selectedLanguage$: Observable<string> = this._selectedLanguage$$.asObservable();
 
+
   constructor(private _httpClient: HttpClient,
               private _translate: TranslateService
   ) { }
@@ -100,4 +101,19 @@ public selectedLanguage(selectedLanguage: string): void {
     }
   }
 
+  public async registration(token: string): Promise<any> {
+    const secretKey: string = 'ysc2_PaSw5WvSh4SU1AaM5CcHw5hYs7yHBryckhmohgxL3515b98b';
+    const apiUrl: string = `https://smartcaptcha.yandexcloud.net/validate?secret=${secretKey}&token=${token}`;
+
+    this.loader = true;
+    try {
+      const data: any = await this._httpClient.get(apiUrl).toPromise();
+      this.loader = false;
+      return data;
+    } catch (error: any ) {
+      this.message = 'Не удалось пройти проверку! Попробуйте еще раз';
+      this.loader = false;
+      throw error;
+    }
+  }
 }
