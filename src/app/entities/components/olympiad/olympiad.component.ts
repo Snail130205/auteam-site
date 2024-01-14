@@ -179,7 +179,7 @@ export class OlympiadComponent implements OnInit, OnDestroy {
     private _changedForm(): void {
         this.form.valueChanges
             .subscribe(() => {
-                this.disabledForm = (this.form.invalid || !this.token);
+                this.disabledForm = this.form.invalid;
             });
     }
 
