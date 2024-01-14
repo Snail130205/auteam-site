@@ -76,6 +76,7 @@
   "INSTITUTION_FULL_NAME": "Полное название образовательного учреждения",
   "APPLY_FOR_PARTICIPATION": "Подать заявку на участие",
   "REGISTER": "Зарегистрироваться",
+  "REGISTRATION_IS_COMPLETED": "Регистрация завершена",
   "FIELD_REQUIRED": "Поле обязательно для заполнения",
   "INVALID_EMAIL": "Электронная почта введена неверно",
   "SELECT_EDUCATIONAL_TYPE": "Выберите тип учебного заведения...",

@@ -76,6 +76,7 @@
   "INSTITUTION_FULL_NAME": "Full Name of Educational Institution",
   "APPLY_FOR_PARTICIPATION": "Apply for Participation",
   "REGISTER": "Register",
+  "REGISTRATION_IS_COMPLETED": "Registration is completed",
   "FIELD_REQUIRED": "This field is required",
   "INVALID_EMAIL": "Invalid email address",
   "SELECT_EDUCATIONAL_TYPE": "Select the type of educational institution...",

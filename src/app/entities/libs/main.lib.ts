@@ -63,14 +63,14 @@ export abstract class MainLib {
       en: 'Secondary education'
     },
     {
-      id: 3,
-      name: 'Высшее',
-      en: 'Higher education'
-    },
-    {
       id: 2,
       name: 'Среднее специальное',
       en: 'Specialized secondary'
+    },
+    {
+      id: 3,
+      name: 'Высшее',
+      en: 'Higher education'
     },
   ];
 
