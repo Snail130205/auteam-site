@@ -357,7 +357,7 @@
       <input type="hidden" name="smart-token" />
     </div>
     <dx-button [(disabled)]="('' !== token) || (NowDate > dateOlympiad) || disabledForm"
-               (click)="registration()"
+               (onClick)="registration()"
                [text]="(NowDate < dateOlympiad ? 'REGISTER' : 'REGISTRATION_IS_COMPLETED')| translate"
                stylingMode="contained"
                type="default"
