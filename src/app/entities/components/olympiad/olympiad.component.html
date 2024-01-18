@@ -12,16 +12,14 @@
          class="image">
   </div>
   <div class="olympiad-info">
-    <div *ngIf="NowDate < dateOlympiad"
-         class="stage">
+    <div class="stage">
       {{ 'COUNTDOWN_SECTION.BEFORE_START' | translate }}
       <span>
     1 {{ 'COUNTDOWN_SECTION.STAGE' | translate }}
   </span>
       {{ 'COUNTDOWN_SECTION.REMAINING' | translate }}
     </div>
-    <div *ngIf="NowDate < dateOlympiad"
-         class="time">
+    <div class="time">
       {{ timerText }}
     </div>
     <div class="stage">

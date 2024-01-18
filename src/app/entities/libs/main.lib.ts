@@ -114,7 +114,16 @@ export abstract class MainLib {
     {
       img: './assets/logos/secopin.jpg',
       link: 'https://secopin.com'
-    }
+    },
+    {
+      img: './assets/logos/Academy-rosatom.jpg',
+      link: 'https://rosatom-academy.ru/'
+    },
+    {
+      img: './assets/logos/rosatom.png',
+      link: 'https://www.rosatom.ru/index.html'
+    },
+
     // {
     //   img: './assets/logos/tayle.jpg',
     //   link: 'https://www.tayle.ru/'
