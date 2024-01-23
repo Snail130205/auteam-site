@@ -356,7 +356,7 @@
       data-callback="yandex_captcha">
       <input type="hidden" name="smart-token" />
     </div>
-    <dx-button [(disabled)]="('' !== token) || (NowDate > dateOlympiad) || disabledForm"
+    <dx-button [(disabled)]="!(token !== '') || (NowDate > dateOlympiad) || disabledForm"
                (onClick)="registration()"
                [text]="(NowDate < dateOlympiad ? 'REGISTER' : 'REGISTRATION_IS_COMPLETED')| translate"
                stylingMode="contained"
