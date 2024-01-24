@@ -123,6 +123,10 @@ export abstract class MainLib {
       img: './assets/logos/rosatom.png',
       link: 'https://www.rosatom.ru/index.html'
     },
+    {
+      img: './assets/logos/dialog.png',
+      link: 'https://dialog-digital.ru/'
+    },
 
     // {
     //   img: './assets/logos/tayle.jpg',
