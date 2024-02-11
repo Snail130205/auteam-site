@@ -87,8 +87,8 @@ export class OlympiadComponent implements OnInit, OnDestroy {
         this._changedForm();
         this._mainService.olympiadInfo$.subscribe((olympiadInfo) => {
             if (olympiadInfo) {
-                this.date = moment(olympiadInfo.olympiadStartDate.date);
-                this.dateOlympiad = new Date(olympiadInfo.olympiadStartDate.date);
+                this.date = moment(olympiadInfo.olympiadStartDate);
+                this.dateOlympiad = new Date(olympiadInfo.olympiadStartDate);
                 this.teamCount = olympiadInfo.teamCount;
             }
         });
@@ -152,7 +152,7 @@ export class OlympiadComponent implements OnInit, OnDestroy {
         const now = moment();
         const duration = moment.duration(this.date.diff(now));
 
-        const days = duration.days();
+        const days = Math.floor(duration.asDays()); // Получение полных дней
         const hours = duration.hours();
         const minutes = duration.minutes();
         const seconds = duration.seconds();
