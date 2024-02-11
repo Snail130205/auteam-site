@@ -119,9 +119,9 @@
   "UYMIN": "Anton Grigorievich Uymin",
   "MOROZOV": "Ilya Morozov",
   "UYMIN_WORK": "Head of the Laboratory of Networks and Information Transmission Systems at Gubkin Russian State University of Oil and Gas (NRU), AtomSkills Expert.\n",
-  "MOROZOV_WORK": "Master of the Laboratory of Networks and Information Transmission Systems, AtomSkills Expert.",
+  "MOROZOV_WORK": "Master of the Laboratory of Networks and Information Transmission Systems at Gubkin Russian State University of Oil and Gas (NRU), AtomSkills Expert.",
   "UYMIN_INSTRUCTOR": "Instructor: CCNA, CCNAS, CCNA Cyber Ops, CCNP, IoT, MikroTik, HCNA R&S, HCNA Storage, HCNA AI, Basalt SPO, RED SOFT",
-  "UYMIN_ACTIVITY": "Since 2006, he has been involved in teaching and developing the laboratory base, creating stands for laboratory and practical work, and preparing methodological materials at the FGOU SPO \"Ural Radio Technical College named after A.S. Popov\". Head of Laboratory №213 \"Computer Networks\". Since 2008, he has been the head of the Cisco Networking Academy. From 2019 to 2021, he was part of the Union \"Young Professionals (WorldSkills Russia)\" in Network and System Administration. He managed the competence work in 53 regions of the country, developed methodological bases, and organized profile events - preparation for the WSI 2019 World Championship, Cybersecurity competence (WSI 2019 Gold). In recent years, he has been heading the IT department at GBPOU MIK and the \"Networks and Information Transmission Systems\" laboratory at Gubkin Russian State University of Oil and Gas (NRU). Since 2022, he has been at JSC \"Greenatom\".",
+  "UYMIN_ACTIVITY": "Since 2006, he has been involved in teaching and developing the laboratory base, creating stands for laboratory and practical work, and preparing methodological materials at the FGOU SPO \"Ural Radio Technical College named after A.S. Popov\". Head of Laboratory №213 \"Computer Networks\". Since 2008, he has been the head of the Cisco Networking Academy. From 2019 to 2021, he was part of the Union \"Young Professionals (WorldSkills Russia)\" in Network and System Administration. He managed the competence work in 53 regions of the country, developed methodological bases, and organized profile events - preparation for the WSI 2019 World Championship, Cybersecurity competence (WSI 2019 Gold). In recent years, he has been heading the IT department at GBPOU MIK and the \"Networks and Information Transmission Systems\" laboratory at Gubkin Russian State University of Oil and Gas (NRU).",
   "UYMIN_TEACH": "Teaching Areas",
   "UYMIN_TEACH_LIST": [
     "Networks and Information Transmission Systems",
@@ -129,6 +129,6 @@
     "Administration of Operating Systems",
     "Modern Operating Systems"
   ],
-  "MOROZOV_ACTIVITY": "In addition to his core technical and applied activities (having practical experience in network administration), he actively participates in the implementation of educational projects - based at the Rosatom Academy (course in Network and System Administration). He teaches specialized disciplines at GBPOU MIK, and is also a master at the Department of Information Technology Security at Gubkin Russian State University of Oil and Gas. Since 2022, he has been a senior specialist at JSC \"Greenatom\" in WS."
+  "MOROZOV_ACTIVITY": "In addition to his core technical and applied activities (having practical experience in network administration), he actively participates in the implementation of educational projects - based at the Rosatom Academy (course in Network and System Administration). He teaches specialized disciplines at GBPOU MIK, and is also a master at the Department of Information Technology Security at Gubkin Russian State University of Oil and Gas."
 }
 
