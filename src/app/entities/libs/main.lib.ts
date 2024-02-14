@@ -127,10 +127,24 @@ export abstract class MainLib {
       img: './assets/logos/dialog.png',
       link: 'https://dialog-digital.ru/'
     },
+  ];
 
-    // {
-    //   img: './assets/logos/tayle.jpg',
-    //   link: 'https://www.tayle.ru/'
-    // }
+  public static readonly documents: any[] = [
+    {
+      title: 'TASK_2015',
+      file: 'Задание очного этапа 2015.docx'
+    },
+    {
+      title: 'TASK_2016',
+      file: 'Задание очного этапа 2016.pdf'
+    },
+    {
+      title: 'TASK_2022',
+      file: 'Задание очного этапа 2022.docx'
+    },
+    {
+      title: 'PROGRAM',
+      file: 'Программа и положение.pdf'
+    },
   ];
 }

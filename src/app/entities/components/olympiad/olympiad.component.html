@@ -1,374 +1,394 @@
 <div class="olympiad">
-  <div class="container">
-    <div class="main-text">
-      <div class="title">
-        {{'OLYMPIAD_NAME' | translate}}
-      </div>
-      <div class="description">
-        {{'OLYMPIAD_DESCRIPTION' | translate}}
-      </div>
+    <div class="container">
+        <div class="main-text">
+            <div class="title">
+                {{'OLYMPIAD_NAME' | translate}}
+            </div>
+            <div class="description">
+                {{'OLYMPIAD_DESCRIPTION' | translate}}
+            </div>
+        </div>
+        <img src="./assets/icons/averin.jpeg"
+             class="image">
     </div>
-    <img src="./assets/icons/averin.jpeg"
-         class="image">
-  </div>
-  <div class="olympiad-info">
-    <div class="stage">
-      {{ 'COUNTDOWN_SECTION.BEFORE_START' | translate }}
-      <span>
+    <div class="olympiad-info">
+        <div class="stage">
+            {{ 'COUNTDOWN_SECTION.BEFORE_START' | translate }}
+            <span>
     1 {{ 'COUNTDOWN_SECTION.STAGE' | translate }}
   </span>
-      {{ 'COUNTDOWN_SECTION.REMAINING' | translate }}
+            {{ 'COUNTDOWN_SECTION.REMAINING' | translate }}
+        </div>
+        <div class="time">
+            {{ timerText }}
+        </div>
+        <div class="stage">
+            {{'REGISTERED' | translate}}
+        </div>
+        <div class="time">
+            {{ teamCount }}
+        </div>
     </div>
-    <div class="time">
-      {{ timerText }}
-    </div>
-    <div class="stage">
-      {{'REGISTERED' | translate}}
-    </div>
-    <div class="time">
-      {{ teamCount }}
-    </div>
-  </div>
 
-  <div class="information">
-    <div class="title">
-      {{'ABOUT_OLYMPIAD' | translate}}
-    </div>
-    <div class="box">
-      <img src="./assets/icons/goal.svg"
-           class="img">
-      <div class="text">
+    <div class="information">
         <div class="title">
-          {{'GOAL_OLYMPIAD' | translate}}
+            {{'ABOUT_OLYMPIAD' | translate}}
         </div>
-        <div class="description">
-          {{'GOAL_OLYMPIAD_TEXT' | translate}}
+        <div class="box">
+            <img src="./assets/icons/goal.svg"
+                 class="img">
+            <div class="text">
+                <div class="title">
+                    {{'GOAL_OLYMPIAD' | translate}}
+                </div>
+                <div class="description">
+                    {{'GOAL_OLYMPIAD_TEXT' | translate}}
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="box">
+            <img src="./assets/icons/player.svg"
+                 class="img">
+            <div class="text">
+                <div class="title">
+                    {{'PARTICIPANTS' | translate}}
+                </div>
+                <div class="description">
+                    {{'PARTICIPANTS_TEXT' | translate}}
+                </div>
+            </div>
+        </div>
+        <div class="partners">
+            <div class="text">
+                <div class="title">
+                    {{'PARTNERS' | translate}}
+                </div>
+                <div class="description">
+                    <div *ngFor="let partner of partners"
+                         class="partner">
+                        <a [href]="partner.link"
+                           target="_blank"
+                           class="link">
+                            <img [src]="partner.img"
+                                 class="image">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="box">
-      <img src="./assets/icons/player.svg"
-           class="img">
-      <div class="text">
+
+    <div class="form"
+         [formGroup]="form">
         <div class="title">
-          {{'PARTICIPANTS' | translate}}
+            {{ 'APPLY_FOR_PARTICIPATION' | translate }}
         </div>
-        <div class="description">
-          {{'PARTICIPANTS_TEXT' | translate}}
+        <div class="form-container">
+            <div class="box-column">
+                <div class="label">
+                    {{'INSTITUTION_FULL_NAME' | translate}}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="education">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="partners">
-      <div class="text">
-        <div class="title">
-          {{'PARTNERS' | translate}}
-        </div>
-        <div class="description">
-          <div *ngFor="let partner of partners"
-               class="partner">
-            <a [href]="partner.link"
-               target="_blank"
-               class="link">
-              <img [src]="partner.img"
-                   class="image">
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="form"
-       [formGroup]="form">
-    <div class="title">
-      {{ 'APPLY_FOR_PARTICIPATION' | translate }}
-    </div>
-    <div class="form-container">
-      <div class="box-column">
-        <div class="label">
-          {{'INSTITUTION_FULL_NAME' | translate}}
+        <div class="form-container">
+            <div class="box">
+                <div class="label">
+                    {{'LEADER_FULL_NAME' | translate}}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="educationalFullName"
+                             class="left">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
+            <div class="box">
+                <div class="label-right">
+                    {{'INSTITUTION_TYPE' | translate}}
+                </div>
+                <dx-select-box stylingMode="outlined"
+                               [dataSource]="educationTypes"
+                               displayExpr="{{ selectedLang === 'RU'? 'name' : 'en'}}"
+                               valueExpr="id"
+                               formControlName="educationalType"
+                               placeholder=" "
+                               [label]="'SELECT_EDUCATIONAL_TYPE' | translate"
+                               labelMode="floating"
+                               class="right">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-select-box>
+            </div>
         </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="education">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-    </div>
 
-    <div class="form-container">
-      <div class="box">
-        <div class="label">
-          {{'LEADER_FULL_NAME' | translate}}
+        <div class="form-container">
+            <div class="box">
+                <div class="label">
+                    {{'LEADER_POSITION' | translate}}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="educationalPosition"
+                             class="left">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
+            <div class="box">
+                <div class="label-right">
+                    {{ 'CURATOR_FULL_NAME' | translate }}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="teamLeadName"
+                             class="right">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
         </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="educationalFullName"
-                     class="left">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-      <div class="box">
-        <div class="label-right">
-          {{'INSTITUTION_TYPE' | translate}}
-        </div>
-        <dx-select-box stylingMode="outlined"
-                       [dataSource]="educationTypes"
-                       displayExpr="{{ selectedLang === 'RU'? 'name' : 'en'}}"
-                       valueExpr="id"
-                       formControlName="educationalType"
-                       placeholder=" "
-                       [label]="'SELECT_EDUCATIONAL_TYPE' | translate"
-                       labelMode="floating"
-                       class="right">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-select-box>
-      </div>
-    </div>
-
-    <div class="form-container">
-      <div class="box">
-        <div class="label">
-          {{'LEADER_POSITION' | translate}}
-        </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="educationalPosition"
-                     class="left">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-      <div class="box">
-        <div class="label-right">
-          {{ 'CURATOR_FULL_NAME' | translate }}
-        </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="teamLeadName"
-                     class="right">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-    </div>
 
 
-    <div class="form-container">
-      <div class="box">
-        <div class="label">
-          {{ 'CURATOR_PHONE' | translate }}
+        <div class="form-container">
+            <div class="box">
+                <div class="label">
+                    {{ 'CURATOR_PHONE' | translate }}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="teamLeadPhone"
+                             class="left">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                        <dxi-validation-rule
+                                type="pattern"
+                                pattern="^\+\d{1,4}[-.\s]?\d{1,14}$"
+                                [message]="'INVALID_PHONE' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
+            <div class="box">
+                <div class="label-right">
+                    {{ 'CURATOR_EMAIL' | translate }}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="teamLeadEmail"
+                             class="right">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                        <dxi-validation-rule
+                                type="email"
+                                [message]="'INVALID_EMAIL' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
         </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="teamLeadPhone"
-                     class="left">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="pattern"
-              pattern="^\+\d{1,4}[-.\s]?\d{1,14}$"
-              [message]="'INVALID_PHONE' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-      <div class="box">
-        <div class="label-right">
-          {{ 'CURATOR_EMAIL' | translate }}
-        </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="teamLeadEmail"
-                     class="right">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="email"
-              [message]="'INVALID_EMAIL' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-    </div>
 
-    <div class="form-container">
-      <div class="box-column">
-        <div class="label">
-          {{ 'TEAM_NAME' | translate }}
+        <div class="form-container">
+            <div class="box-column">
+                <div class="label">
+                    {{ 'TEAM_NAME' | translate }}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="teamName"
+                             width="100%">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
         </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="teamName"
-                     width="100%">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-    </div>
 
-    <div class="form-container">
-      <div class="box">
-        <div class="label">
-          {{ 'FIRST_PARTICIPANT_FULL_NAME' | translate }}
+        <div class="form-container">
+            <div class="box">
+                <div class="label">
+                    {{ 'FIRST_PARTICIPANT_FULL_NAME' | translate }}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="participantFullName1"
+                             class="left">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
+            <div class="box">
+                <div class="label-right">
+                    {{ 'SECOND_PARTICIPANT_FULL_NAME' | translate }}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="participantFullName2"
+                             class="right">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
         </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="participantFullName1"
-                     class="left">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-      <div class="box">
-        <div class="label-right">
-          {{ 'SECOND_PARTICIPANT_FULL_NAME' | translate }}
-        </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="participantFullName2"
-                     class="right">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-    </div>
 
-    <div class="form-container">
-      <div class="box">
-        <div class="label">
-          {{ 'FIRST_PARTICIPANT_PHONE' | translate }}
+        <div class="form-container">
+            <div class="box">
+                <div class="label">
+                    {{ 'FIRST_PARTICIPANT_PHONE' | translate }}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="participantPhone1"
+                             class="left">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                        <dxi-validation-rule
+                                type="pattern"
+                                pattern="^\+\d{1,4}[-.\s]?\d{1,14}$"
+                                [message]="'INVALID_PHONE' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
+            <div class="box">
+                <div class="label-right">
+                    {{ 'SECOND_PARTICIPANT_PHONE' | translate }}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="participantPhone2"
+                             class="right">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                        <dxi-validation-rule
+                                type="pattern"
+                                pattern="^\+\d{1,4}[-.\s]?\d{1,14}$"
+                                [message]="'INVALID_PHONE' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
         </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="participantPhone1"
-                     class="left">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="pattern"
-              pattern="^\+\d{1,4}[-.\s]?\d{1,14}$"
-              [message]="'INVALID_PHONE' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-      <div class="box">
-        <div class="label-right">
-          {{ 'SECOND_PARTICIPANT_PHONE' | translate }}
-        </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="participantPhone2"
-                     class="right">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="pattern"
-              pattern="^\+\d{1,4}[-.\s]?\d{1,14}$"
-              [message]="'INVALID_PHONE' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-    </div>
 
-    <div class="form-container">
-      <div class="box">
-        <div class="label">
-          {{ 'FIRST_PARTICIPANT_EMAIL' | translate }}
+        <div class="form-container">
+            <div class="box">
+                <div class="label">
+                    {{ 'FIRST_PARTICIPANT_EMAIL' | translate }}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="participantEmail1"
+                             class="left">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                        <dxi-validation-rule
+                                type="email"
+                                [message]="'INVALID_EMAIL' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
+            <div class="box">
+                <div class="label-right">
+                    {{ 'SECOND_PARTICIPANT_EMAIL' | translate }}
+                </div>
+                <dx-text-box stylingMode="outlined"
+                             formControlName="participantEmail2"
+                             class="right">
+                    <dx-validator>
+                        <dxi-validation-rule
+                                type="required"
+                                [message]="'FIELD_REQUIRED' | translate">
+                        </dxi-validation-rule>
+                        <dxi-validation-rule
+                                type="email"
+                                [message]="'INVALID_EMAIL' | translate">
+                        </dxi-validation-rule>
+                    </dx-validator>
+                </dx-text-box>
+            </div>
         </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="participantEmail1"
-                     class="left">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="email"
-              [message]="'INVALID_EMAIL' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-      <div class="box">
-        <div class="label-right">
-          {{ 'SECOND_PARTICIPANT_EMAIL' | translate }}
+        <div
+                id="captcha-container"
+                class="smart-captcha"
+                data-sitekey="ysc1_PaSw5WvSh4SU1AaM5CcHW6xZZPci33eE70fEtsv52144b842"
+                data-callback="yandex_captcha">
+            <input type="hidden" name="smart-token"/>
         </div>
-        <dx-text-box stylingMode="outlined"
-                     formControlName="participantEmail2"
-                     class="right">
-          <dx-validator>
-            <dxi-validation-rule
-              type="required"
-              [message]="'FIELD_REQUIRED' | translate">
-            </dxi-validation-rule>
-            <dxi-validation-rule
-              type="email"
-              [message]="'INVALID_EMAIL' | translate">
-            </dxi-validation-rule>
-          </dx-validator>
-        </dx-text-box>
-      </div>
-    </div>
-    <div
-      id="captcha-container"
-      class="smart-captcha"
-      data-sitekey="ysc1_PaSw5WvSh4SU1AaM5CcHW6xZZPci33eE70fEtsv52144b842"
-      data-callback="yandex_captcha">
-      <input type="hidden" name="smart-token" />
-    </div>
-    <dx-button [(disabled)]="!(token !== '') || (NowDate > dateOlympiad) || disabledForm"
-               (onClick)="registration()"
-               [text]="(NowDate < dateOlympiad ? 'REGISTER' : 'REGISTRATION_IS_COMPLETED')| translate"
-               stylingMode="contained"
-               type="default"
-               class="button"
-    ></dx-button>
-    <div class="warning">
-      {{ 'AGREE_TO_PRIVACY_POLICY_1' | translate }}
-      <span (click)="openFile('Политика в отношении обработки персональных данных.pdf')"
-            class="politic">
+        <dx-button [(disabled)]="!(token !== '') || (NowDate > dateOlympiad) || disabledForm"
+                   (onClick)="registration()"
+                   [text]="(NowDate < dateOlympiad ? 'REGISTER' : 'REGISTRATION_IS_COMPLETED')| translate"
+                   stylingMode="contained"
+                   type="default"
+                   class="button"
+        ></dx-button>
+        <div class="warning">
+            {{ 'AGREE_TO_PRIVACY_POLICY_1' | translate }}
+            <span (click)="openFile('Политика в отношении обработки персональных данных.pdf')"
+                  class="politic">
         {{ 'AGREE_TO_PRIVACY_POLICY_2' | translate }}
       </span>
+        </div>
     </div>
-  </div>
+
+    <div class="documents-title">
+        {{ 'DOCUMENTS' | translate }}
+    </div>
+    <div class="documents">
+        <div *ngFor="let document of documents"
+             class="container">
+            <div class="document">
+                <div class="title">
+                    {{ document.title | translate }}
+                </div>
+                <dx-button (click)="openFile(document.file)"
+                           [text]="'GO_OVER'| translate"
+                           stylingMode="contained"
+                           type="default"
+                           class="button"
+                ></dx-button>
+            </div>
+        </div>
+    </div>
 </div>

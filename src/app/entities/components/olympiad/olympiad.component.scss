@@ -369,6 +369,7 @@
       text-align: center;
       color: rgba(26, 26, 26, 0.7);
       margin-top: 8px;
+      margin-bottom: 60px;
 
       .politic {
         cursor: pointer;
@@ -420,5 +421,89 @@
   .smart-captcha {
     margin: 16px 0 8px;
     height: 100px;
+  }
+
+  .documents-title {
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 700;
+    margin-bottom: 48px;
+
+    @media screen and (max-width: 1100px) and (min-width: 490px) {
+      font-size: 20px;
+      line-height: 35px;
+      margin-bottom: 36px;
+    }
+
+    @media screen and (max-width: 489px) {
+      font-size: 25px;
+      line-height: 25px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .documents {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 95%;
+
+    .container {
+      width: 30%;
+      margin: 0;
+
+      @media screen and (max-width: 1100px) and (min-width: 636px) {
+       width: 45%;
+      }
+
+      @media screen and (max-width: 635px) {
+        width: 100%;
+      }
+
+      .document {
+        border-radius: 16px;
+        padding: 32px;
+        margin-bottom: 36px;
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(26, 26, 26, 0.1);
+        width: 100%;
+
+        @media screen and (max-width: 1100px) and (min-width: 490px) {
+          border-radius: 12px;
+          padding: 24px;
+          margin-bottom: 27px;
+        }
+
+        @media screen and (max-width: 489px) {
+          border-radius: 8px;
+          padding: 16px;
+          margin-bottom: 18px;
+        }
+      }
+
+      .title {
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 600;
+        margin-bottom: 16px;
+
+        @media screen and (max-width: 1100px) and (min-width: 490px) {
+          font-size: 13px;
+          line-height: 20px;
+          margin-bottom: 12px;
+        }
+
+        @media screen and (max-width: 489px) {
+          font-size: 9px;
+          line-height: 15px;
+          margin-bottom: 8px;
+        }
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
   }
 }

@@ -50,6 +50,7 @@ export class OlympiadComponent implements OnInit, OnDestroy {
     public teamCount: number = 0;
     public disabledForm: boolean = true;
     public partners: any[] = MainLib.partners;
+    public documents: any[] = MainLib.documents;
     public token: string = '';
     // @ts-ignore
     private timerSubscription: Subscription;
