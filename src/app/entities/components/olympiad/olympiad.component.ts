@@ -172,11 +172,11 @@ export class OlympiadComponent implements OnInit, OnDestroy {
     }
 
     private updateTimer(): void {
-        if (new Date() < this.dateOlympiad) {
+        if (new Date().getTime() < this.dateOlympiad.getTime()) {
             this.timerText = this.getTimeRemaining();
         } else {
             this.timerText = this.translateService.instant('TIMER.REMAINING', {
-                days: 10,
+                days: 0,
                 hours: 0,
                 minutes: 0,
                 seconds: 0,
