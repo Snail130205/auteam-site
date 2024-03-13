@@ -54,7 +54,7 @@
     "REMAINING": "{{days}} days {{hours}} hours {{minutes}} minutes {{seconds}} seconds"
   },
   "COUNTDOWN_SECTION": {
-    "BEFORE_START": "Before the start",
+    "BEFORE_START": "Before the end",
     "STAGE": "stage",
     "REMAINING": "remaining"
   },

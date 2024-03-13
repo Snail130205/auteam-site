@@ -54,7 +54,7 @@
     "REMAINING": "{{days}} дней {{hours}} часов {{minutes}} минут {{seconds}} секунд"
   },
   "COUNTDOWN_SECTION": {
-    "BEFORE_START": "До начала",
+    "BEFORE_START": "До окончания",
     "STAGE": "этапа",
     "REMAINING": "осталось"
   },
