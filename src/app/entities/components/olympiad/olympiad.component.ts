@@ -43,7 +43,7 @@ export class OlympiadComponent implements OnInit, OnDestroy {
     public selectedLang: string = 'RU';
     public rules: any = {X: /[02-9]/};
     public educationTypes: IEducation[] = MainLib.educationTypes;
-    public date: moment.Moment = moment(new Date());
+    public date: Date = new Date();
     public dateOlympiad: Date = new Date();
     public NowDate: Date = new Date();
     public timerText: string = '';
@@ -87,11 +87,11 @@ export class OlympiadComponent implements OnInit, OnDestroy {
         this._loadCaptchaScript();
         this._changedForm();
         this._mainService.olympiadInfo$.subscribe((olympiadInfo) => {
-            if (olympiadInfo) {
-                this.date = moment(olympiadInfo.olympiadStartDate);
-                this.dateOlympiad = new Date(olympiadInfo.olympiadStartDate);
-                this.teamCount = olympiadInfo.teamCount;
-            }
+          if (olympiadInfo) {
+            this.date = new Date(olympiadInfo.olympiadStartDate);
+            this.dateOlympiad = new Date(olympiadInfo.olympiadStartDate);
+            this.teamCount = olympiadInfo.teamCount;
+          }
         });
         this.translateService.onLangChange.subscribe((res) => {
             this.selectedLang = res.lang;
@@ -149,22 +149,22 @@ export class OlympiadComponent implements OnInit, OnDestroy {
             })
     }
 
-    public getTimeRemaining(): string {
-        const now = moment();
-        const duration = moment.duration(this.date.diff(now));
+  public getTimeRemaining(): string {
+    const now = new Date();
+    const duration = this.date.getTime() - now.getTime();
 
-        const days = Math.floor(duration.asDays()); // Получение полных дней
-        const hours = duration.hours();
-        const minutes = duration.minutes();
-        const seconds = duration.seconds();
+    const days = Math.floor(duration / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((duration % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((duration % (1000 * 60)) / 1000);
 
-        return this.translateService.instant('TIMER.REMAINING', {
-            days: days,
-            hours: hours,
-            minutes: minutes,
-            seconds: seconds,
-        });
-    }
+    return this.translateService.instant('TIMER.REMAINING', {
+      days: days,
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds,
+    });
+  }
 
     ngOnDestroy(): void {
         // Отписываемся от таймера при уничтожении компонента
@@ -172,7 +172,7 @@ export class OlympiadComponent implements OnInit, OnDestroy {
     }
 
     private updateTimer(): void {
-        if (new Date() < this.dateOlympiad) {
+        if (new Date().getTime() < this.dateOlympiad.getTime()) {
             this.timerText = this.getTimeRemaining();
         } else {
             this.timerText = this.translateService.instant('TIMER.REMAINING', {
